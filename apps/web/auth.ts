@@ -4,6 +4,7 @@ import { PrismaAdapter } from "@auth/prisma-adapter";
 import { cookies } from "next/headers";
 import { hashInvitationToken, isInvitationUsable } from "@koeki/auth";
 import { prisma } from "@koeki/database";
+import { findSunaCharacterByDiscordId } from "./lib/zenkai";
 
 const refuse = (reason: string) => { console.warn(`[auth] connexion refusée : ${reason}`); return false; };
 
@@ -49,9 +50,6 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
       if (existing?.revokedAt) return refuse("compte révoqué");
       if (existing?.roles.length) return true;
       if (account?.provider !== "discord" || !account.access_token) return refuse("jeton d’accès Discord absent");
-      const token = await readInviteToken();
-      if (!token) return refuse("cookie d’invitation absent ou expiré — rouvrir le lien d’invitation");
-      if (!process.env.INVITE_TOKEN_PEPPER) return refuse("INVITE_TOKEN_PEPPER manquant côté serveur");
       const guildId = process.env.DISCORD_GUILD_ID;
       if (guildId) {
         const response = await fetch("https://discord.com/api/users/@me/guilds", { headers: { Authorization: `Bearer ${account.access_token}` }, cache: "no-store" });
@@ -59,11 +57,22 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
         const guilds = await response.json() as Array<{ id: string }>;
         if (!guilds.some((guild) => guild.id === guildId)) return refuse(`le compte n’appartient pas au serveur ${guildId} (${guilds.length} serveur${guilds.length > 1 ? "s" : ""} visibles)`);
       }
-      const invitation = await findUsableInvitation(token);
-      if (!invitation) return refuse("invitation introuvable, expirée, révoquée ou déjà utilisée");
-      // Existing account without role: the user row exists, consume immediately.
-      if (existing) { try { await consumeInvitation(existing.id, token); } catch { return refuse("invitation déjà consommée par un autre compte"); } }
-      // New account: the user row does not exist yet — consumption happens in events.createUser.
+      const token = await readInviteToken();
+      // Invitation staff (rôle élevé accordé par un responsable) : chemin historique, inchangé.
+      if (token) {
+        if (!process.env.INVITE_TOKEN_PEPPER) return refuse("INVITE_TOKEN_PEPPER manquant côté serveur");
+        const invitation = await findUsableInvitation(token);
+        if (!invitation) return refuse("invitation introuvable, expirée, révoquée ou déjà utilisée");
+        // Existing account without role: the user row exists, consume immediately.
+        if (existing) { try { await consumeInvitation(existing.id, token); } catch { return refuse("invitation déjà consommée par un autre compte"); } }
+        // New account: the user row does not exist yet — consumption happens in events.createUser.
+        return true;
+      }
+      // Sans invitation : accès direct pour tout ninja de Suna reconnu par l'API Zenkai
+      // (même logique que hopital-suna — le compte Discord doit être lié à un personnage
+      // de la bonne faction). Rôle NINJA attribué automatiquement dans events.createUser.
+      const character = await findSunaCharacterByDiscordId(account.providerAccountId).catch(() => null);
+      if (!character) return refuse("aucun personnage de Suna lié à ce compte Discord sur Zenkai");
       return true;
     },
     async session({ session, user }) {
@@ -77,12 +86,26 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
   events: {
     async createUser({ user }) {
       const token = await readInviteToken();
+      if (token) {
+        try {
+          if (!user.id) throw new Error("USER_ID_MISSING");
+          await consumeInvitation(user.id, token);
+        } catch (error) {
+          // Without a consumed invitation the account must not survive: revoke it immediately.
+          console.warn(`[auth] consommation d’invitation impossible pour le nouveau compte : ${error instanceof Error ? error.message : String(error)}`);
+          if (user.id) await prisma.user.update({ where: { id: user.id }, data: { revokedAt: new Date() } }).catch(() => {});
+        }
+        return;
+      }
+      // Compte auto-créé via la vérification Zenkai (signIn) : rôle NINJA de base,
+      // le rattachement à une fiche ninja se fait ensuite sur /profil.
       try {
-        if (!user.id || !token) throw new Error("INVITE_COOKIE_MISSING");
-        await consumeInvitation(user.id, token);
+        if (!user.id) throw new Error("USER_ID_MISSING");
+        const ninjaRole = await prisma.role.findUnique({ where: { code: "NINJA" } });
+        if (!ninjaRole) throw new Error("NINJA_ROLE_MISSING");
+        await prisma.userRole.create({ data: { userId: user.id, roleId: ninjaRole.id, assignedById: user.id } });
       } catch (error) {
-        // Without a consumed invitation the account must not survive: revoke it immediately.
-        console.warn(`[auth] consommation d’invitation impossible pour le nouveau compte : ${error instanceof Error ? error.message : String(error)}`);
+        console.warn(`[auth] attribution du rôle NINJA impossible pour le nouveau compte : ${error instanceof Error ? error.message : String(error)}`);
         if (user.id) await prisma.user.update({ where: { id: user.id }, data: { revokedAt: new Date() } }).catch(() => {});
       }
     },

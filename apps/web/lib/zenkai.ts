@@ -35,6 +35,13 @@ export const getSunaCharacters = cache(async (): Promise<ZenkaiCharacter[]> => {
   return all.filter((character) => character.divisions.some((division) => division.faction === ZENKAI_FACTION) && !character.hidden);
 });
 
+export async function findSunaCharacterByDiscordId(discordId: string): Promise<ZenkaiCharacter | null> {
+  const all = await getSunaCharacters();
+  const matches = all.filter((character) => character.discordId === discordId);
+  matches.sort((a, b) => new Date(b.lastPlayedAt ?? 0).getTime() - new Date(a.lastPlayedAt ?? 0).getTime());
+  return matches[0] ?? null;
+}
+
 export type ZenkaiSearchResult = {
   characters: ZenkaiCharacter[];
   total: number;
