@@ -5,6 +5,7 @@ import { cookies } from "next/headers";
 import { hashInvitationToken, isInvitationUsable } from "@koeki/auth";
 import { prisma } from "@koeki/database";
 import { findSunaCharacterByDiscordId } from "./lib/zenkai";
+import { linkOrCreateNinjaForZenkaiCharacter } from "./lib/ninja-link";
 
 const refuse = (reason: string) => { console.warn(`[auth] connexion refusée : ${reason}`); return false; };
 
@@ -111,6 +112,14 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
     },
     async linkAccount({ user, account }) {
       if (account.provider === "discord" && user.id) await prisma.user.update({ where: { id: user.id }, data: { discordId: account.providerAccountId } }).catch(() => {});
+    },
+    // Rattachement automatique au personnage RP (comme hopital-suna) : à chaque connexion
+    // Discord, si le compte n'a pas encore de fiche ninja liée, on la réclame ou on la crée
+    // à partir du personnage Zenkai correspondant à ce discordId.
+    async signIn({ user, account }) {
+      if (account?.provider !== "discord" || !user.id) return;
+      const character = await findSunaCharacterByDiscordId(account.providerAccountId).catch(() => null);
+      if (character) await linkOrCreateNinjaForZenkaiCharacter(user.id, character);
     }
   }
 });
