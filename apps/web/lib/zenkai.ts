@@ -47,12 +47,14 @@ export async function getRecentlyActiveSunaCharacters(days = 14): Promise<Zenkai
 /** Maps the "logistique" Suna division (the Kōeki service on Zenkai) to a koeki
  * RBAC role. Real grade titles vary by sub-team ("Gerant Economique", "Co-Gérant",
  * "Responsable B.R.A.C", "Membre Shomu", "Membre B.R.A.C"…) so this matches on the
- * governing word rather than the full string. "Stagiaire" (trainee) or no division
- * at all keeps the account at the base Ninja role — not staff yet. */
-export function logistiqueRoleFor(character: ZenkaiCharacter): "KOEKI_MANAGER" | "ECONOMIC_AGENT" | null {
+ * governing word rather than the full string. Any manager-tier grade gets full
+ * administrative access (SUPER_ADMIN is only one permission — users:manage — ahead
+ * of KOEKI_MANAGER, and the person actually running the service needs it). "Stagiaire"
+ * (trainee) or no division at all keeps the account at the base Ninja role. */
+export function logistiqueRoleFor(character: ZenkaiCharacter): "SUPER_ADMIN" | "ECONOMIC_AGENT" | null {
   const division = character.divisions.find((entry) => entry.faction === "Suna" && entry.type === "logistique");
   const grade = division?.grade ?? "";
-  if (/g[ée]rant|responsable/i.test(grade)) return "KOEKI_MANAGER";
+  if (/g[ée]rant|responsable/i.test(grade)) return "SUPER_ADMIN";
   if (/membre/i.test(grade)) return "ECONOMIC_AGENT";
   return null;
 }

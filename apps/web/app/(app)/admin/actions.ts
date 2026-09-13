@@ -1,67 +1,12 @@
 "use server";
 
-import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import { z } from "zod";
 import { prisma } from "@koeki/database";
-import { createInvitationToken, EXEMPTION_POLICY_SETTING_KEY } from "@koeki/domain";
+import { EXEMPTION_POLICY_SETTING_KEY } from "@koeki/domain";
 import { getRpService } from "@/lib/data";
-import { autoCoverOpenTaxes, isUniqueViolation, writeAudit } from "@/lib/finance";
+import { autoCoverOpenTaxes, writeAudit } from "@/lib/finance";
 import { hasPermission, requireWriteAccess } from "@/lib/session";
-
-const invitationSchema = z.object({
-  roleId: z.string().min(1, "Choisissez un rôle"),
-  ninjaProfileId: z.string().optional().transform((value) => value || null),
-  expiresDays: z.coerce.number().int().min(1).max(30)
-});
-
-export async function createInvitation(formData: FormData) {
-  const session = await requireWriteAccess("settings:manage");
-  const parsed = invitationSchema.safeParse(Object.fromEntries(formData));
-  const back = (message: string): never => redirect(`/admin?erreur=${encodeURIComponent(message)}`);
-  if (!parsed.success) back(parsed.error.issues[0]?.message ?? "Saisie invalide");
-  const { roleId, ninjaProfileId, expiresDays } = parsed.data!;
-  const pepper = process.env.INVITE_TOKEN_PEPPER;
-  if (!pepper) back("INVITE_TOKEN_PEPPER n’est pas configuré sur le serveur");
-  const role = await prisma.role.findUnique({ where: { id: roleId } });
-  if (!role) back("Rôle inconnu");
-  if (role!.code === "SUPER_ADMIN" && !hasPermission(session, "users:manage")) back("Seul un super-administrateur peut inviter un super-administrateur");
-  const { token, tokenHash } = createInvitationToken(pepper!);
-  const expiresAt = new Date(Date.now() + expiresDays * 86_400_000);
-  try {
-    await prisma.$transaction(async (tx) => {
-      if (ninjaProfileId) {
-        await tx.$executeRaw`SELECT id FROM "NinjaProfile" WHERE id = ${ninjaProfileId} FOR UPDATE`;
-        await tx.invitation.updateMany({
-          where: { ninjaProfileId, status: "PENDING", expiresAt: { lte: new Date() } },
-          data: { status: "EXPIRED" }
-        });
-        const ninja = await tx.ninjaProfile.findUnique({
-          where: { id: ninjaProfileId },
-          include: { invitations: { where: { status: "PENDING" } } }
-        });
-        if (!ninja) throw new Error("VALIDATION:Ninja introuvable");
-        if (ninja.status !== "ACTIVE") throw new Error("VALIDATION:Seul un dossier ninja actif peut être réservé");
-        if (ninja.userId) throw new Error("VALIDATION:Ce ninja est déjà associé à un compte");
-        if (ninja.invitations.length) throw new Error("VALIDATION:Une invitation encore valable existe déjà pour ce ninja — révoquez-la d’abord");
-      }
-      const invitation = await tx.invitation.create({ data: { tokenHash, roleId, ninjaProfileId, createdById: session.userId, expiresAt } });
-      await writeAudit(tx, { actorId: session.userId, action: "INVITATION_CREATED", entityType: "Invitation", entityId: invitation.id, newValues: { role: role!.code, ninjaProfileId, expiresAt: expiresAt.toISOString() } });
-    });
-  } catch (error) {
-    if (error instanceof Error && error.message.startsWith("VALIDATION:")) back(error.message.slice("VALIDATION:".length));
-    if (isUniqueViolation(error)) back(ninjaProfileId ? "Une invitation réserve déjà ce ninja" : "Collision de jeton improbable — réessayez");
-    throw error;
-  }
-  (await cookies()).set("koeki_last_invite", JSON.stringify({ token, role: role!.code, expiresAt: expiresAt.toISOString() }), { httpOnly: true, sameSite: "lax", secure: process.env.NODE_ENV === "production", maxAge: 600, path: "/admin" });
-  redirect("/admin");
-}
-
-export async function dismissLastInvite() {
-  await requireWriteAccess("settings:manage");
-  (await cookies()).delete({ name: "koeki_last_invite", path: "/admin" });
-  redirect("/admin");
-}
 
 /** Replaces a user's role set. Super-admins can grant everything; managers can grant
  *  everything except SUPER_ADMIN and cannot touch a super-admin's account. Roles are read
@@ -99,17 +44,6 @@ export async function updateUserRoles(formData: FormData) {
       previousValues: { roles: currentCodes }, newValues: { roles: requested.map((role) => role.code) } });
   });
   redirect(`/admin?info=${encodeURIComponent(`Rôles de ${displayName} mis à jour — effet immédiat`)}`);
-}
-
-export async function revokeInvitation(formData: FormData) {
-  const session = await requireWriteAccess("settings:manage");
-  const invitationId = formData.get("invitationId");
-  if (typeof invitationId !== "string" || !invitationId) redirect("/admin");
-  await prisma.$transaction(async (tx) => {
-    const updated = await tx.invitation.updateMany({ where: { id: invitationId as string, status: "PENDING" }, data: { status: "REVOKED", revokedAt: new Date() } });
-    if (updated.count === 1) await writeAudit(tx, { actorId: session.userId, action: "INVITATION_REVOKED", entityType: "Invitation", entityId: invitationId as string });
-  });
-  redirect("/admin");
 }
 
 const penaltySchema = z.object({
