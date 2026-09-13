@@ -65,7 +65,7 @@ export default async function NinjaDetailPage({ params, searchParams }: { params
       </form> : <p className="notice" style={{ margin: 18 }}>{gradeNeedsUpdate ? "Renseignez d’abord le grade dans l’onglet Gestion : la semaine en cours sera alors facturée immédiatement." : <>Rien à encaisser : aucune semaine ouverte. La prochaine taxe sera générée dimanche minuit{data.exemptionBalance > 0n && exemptionPolicy.weeklyTaxCoverageBps > 0 ? ` ; le crédit pourra en couvrir jusqu’à ${(exemptionPolicy.weeklyTaxCoverageBps / 100).toLocaleString("fr-FR")} %` : ""}. Un don peut toujours être enregistré ci-dessous, ou un rachat depuis la page <Link href="/resources/transaction" className="text-link">Ressources</Link>.</>}</p>}
     </section>}
     {canPay && isActive && donationResourceOptions.length > 0 && <section className="panel stack-panel">
-      <SectionHeader title="Faire un don" description="Enregistre un don de ressources pour ce ninja — points et crédit d’exonération calculés côté serveur." />
+      <SectionHeader title="Faire un don" description="Enregistre un don de ressources pour ce ninja — points et crédit d’exonération calculés côté serveur. Pour un rachat (payé en Ryō), utilisez la page Ressources." />
       <form action={recordNinjaDonation} className="form-grid">
         <input type="hidden" name="ninjaId" value={data.id} />
         <input type="hidden" name="idempotencyKey" value={crypto.randomUUID()} />
