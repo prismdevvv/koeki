@@ -67,3 +67,31 @@ export async function linkOrCreateNinjaForZenkaiCharacter(userId: string, charac
     console.warn(`[ninja-link] liaison auto impossible pour ${userId} : ${error instanceof Error ? error.message : String(error)}`);
   });
 }
+
+/**
+ * Resolves a Zenkai character straight to a NinjaProfile id for recording a
+ * transaction, without requiring anyone to have created a fiche first: reuses
+ * an existing ACTIVE fiche matched by name, or creates a minimal one on the
+ * spot (no linked Discord account — that can happen later at sign-in via
+ * `linkOrCreateNinjaForZenkaiCharacter`, which will simply claim this fiche).
+ */
+export async function findOrCreateNinjaProfileForCharacter(actorId: string, character: ZenkaiCharacter): Promise<string> {
+  const { firstName, lastName } = splitZenkaiName(character.name);
+  const identity = `${normalize(firstName)}|${normalize(lastName)}`;
+
+  return prisma.$transaction(async (tx) => {
+    await tx.$executeRaw`SELECT pg_advisory_xact_lock(621714422)`;
+    const candidates = await tx.ninjaProfile.findMany({ where: { status: "ACTIVE" }, select: { id: true, firstName: true, lastName: true } });
+    const match = candidates.find((candidate) => `${normalize(candidate.firstName)}|${normalize(candidate.lastName)}` === identity);
+    if (match) return match.id;
+
+    const gradeCode = RANK_TO_GRADE_CODE[character.rank] ?? "UNKNOWN";
+    const grade = await tx.ninjaGrade.findUnique({ where: { code: gradeCode } });
+    if (!grade) throw new Error("VALIDATION:Grade Zenkai inconnu pour ce personnage — contactez un administrateur");
+    const code = await nextNinjaCode(tx);
+    const ninja = await tx.ninjaProfile.create({ data: { code, firstName, lastName, currentGradeId: grade.id } });
+    await tx.ninjaGradeHistory.create({ data: { ninjaId: ninja.id, gradeId: grade.id, effectiveFrom: new Date(), reason: "Auto-enregistrement via Zenkai (transaction)", changedById: actorId } });
+    await tx.auditLog.create({ data: { actorId, action: "NINJA_AUTO_REGISTERED", entityType: "NinjaProfile", entityId: ninja.id, newValues: { code, firstName, lastName, grade: grade.code }, requestId: crypto.randomUUID() } });
+    return ninja.id;
+  });
+}

@@ -4,23 +4,33 @@ import { redirect } from "next/navigation";
 import { z } from "zod";
 import { Prisma, prisma } from "@koeki/database";
 import { activePrice, applyValidatedTransaction, isUniqueViolation, lockActiveNinja, lockResources, nextTransactionReceipt, parseFourDecimal, scaledTimes, withReceiptRetry, writeAudit } from "@/lib/finance";
+import { findOrCreateNinjaProfileForCharacter } from "@/lib/ninja-link";
 import { requireWriteAccess } from "@/lib/session";
+import { getRecentlyActiveSunaCharacters } from "@/lib/zenkai";
 
 const MAX_UNIT_PRICE = 100_000_000;
 const canApproveBuybacks = (roles: readonly string[]) => roles.some((role) => role === "SUPER_ADMIN" || role === "KOEKI_MANAGER");
 
 const transactionSchema = z.object({
   type: z.enum(["DONATION", "BUYBACK"]),
-  ninjaId: z.string().min(1, "Sélectionnez un ninja"),
+  zenkaiCharKey: z.string().min(1, "Sélectionnez un ninja"),
   idempotencyKey: z.string().uuid()
 });
 
 export async function recordResourceTransaction(formData: FormData) {
   const session = await requireWriteAccess("inventory:write");
-  const parsed = transactionSchema.safeParse({ type: formData.get("type"), ninjaId: formData.get("ninjaId"), idempotencyKey: formData.get("idempotencyKey") });
+  const parsed = transactionSchema.safeParse({ type: formData.get("type"), zenkaiCharKey: formData.get("zenkaiCharKey"), idempotencyKey: formData.get("idempotencyKey") });
   const back = (message: string): never => redirect(`/resources/transaction?erreur=${encodeURIComponent(message)}`);
   if (!parsed.success) back(parsed.error.issues[0]?.message ?? "Saisie invalide");
-  const { type, ninjaId, idempotencyKey } = parsed.data!;
+  const { type, zenkaiCharKey, idempotencyKey } = parsed.data!;
+  // The picker searches Zenkai's live roster directly — resolve (or silently create) the
+  // matching fiche before touching the ledger, so no manual "fiche" step is ever required.
+  const character = (await getRecentlyActiveSunaCharacters()).find((entry) => entry.charKey === zenkaiCharKey);
+  if (!character) back("Ce ninja n’est plus dans la liste des personnages actifs — rafraîchissez la page");
+  const ninjaId = await findOrCreateNinjaProfileForCharacter(session.userId, character!).catch((error) => {
+    if (error instanceof Error && error.message.startsWith("VALIDATION:")) back(error.message.slice("VALIDATION:".length));
+    throw error;
+  });
   const lines: Array<{ resourceId: string; quantity: number; negotiated: bigint | null }> = [];
   for (let index = 1; index <= 8; index++) {
     const resourceId = formData.get(`resourceId_${index}`);

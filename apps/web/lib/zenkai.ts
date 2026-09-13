@@ -35,6 +35,15 @@ export const getSunaCharacters = cache(async (): Promise<ZenkaiCharacter[]> => {
   return all.filter((character) => character.divisions.some((division) => division.faction === ZENKAI_FACTION) && !character.hidden);
 });
 
+/** Characters actually played recently — used to pick a ninja for a transaction
+ * without requiring a koeki fiche to already exist (the fiche is created on demand). */
+export async function getRecentlyActiveSunaCharacters(days = 14): Promise<ZenkaiCharacter[]> {
+  const cutoff = Date.now() - days * 86_400_000;
+  const all = await getSunaCharacters();
+  return all.filter((character) => character.lastPlayedAt && new Date(character.lastPlayedAt).getTime() >= cutoff)
+    .sort((a, b) => a.name.localeCompare(b.name, "fr"));
+}
+
 export async function findSunaCharacterByDiscordId(discordId: string): Promise<ZenkaiCharacter | null> {
   const all = await getSunaCharacters();
   const matches = all.filter((character) => character.discordId === discordId);

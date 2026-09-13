@@ -54,7 +54,7 @@ export function TransactionItems({ ninjas, resources, taxCoverageBps }: { ninjas
       <label>Type d’opération<select name="type" required value={type} onChange={(event) => setType(event.target.value === "BUYBACK" ? "BUYBACK" : "DONATION")}><option value="DONATION">Don (points + exonération)</option><option value="BUYBACK">Rachat (payé en Ryō)</option></select></label>
       <label>Ninja{ninjaText && !ninja && <small style={warnStyle}> — choisissez une proposition</small>}
         <input list="ninjas-registre" value={ninjaText} placeholder="Tapez un nom ou un code NIN-…" autoComplete="off" onChange={(event) => setNinjaText(event.target.value)} required />
-        <input type="hidden" name="ninjaId" value={ninja?.id ?? ""} />
+        <input type="hidden" name="zenkaiCharKey" value={ninja?.id ?? ""} />
       </label>
     </div>
     <fieldset>
