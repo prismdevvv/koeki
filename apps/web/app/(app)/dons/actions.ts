@@ -12,7 +12,7 @@ const declarationSchema = z.object({ idempotencyKey: z.string().uuid() });
  *  profile — points, exemption credit and stock only move once an agent validates. */
 export async function declareOwnDonation(formData: FormData) {
   const session = await requireWriteAccess("self:read");
-  const back = (message: string): never => redirect(`/dons?erreur=${encodeURIComponent(message)}`);
+  const back = (message: string): never => redirect(`/resources?tab=dons&erreur=${encodeURIComponent(message)}`);
   const parsed = declarationSchema.safeParse({ idempotencyKey: formData.get("idempotencyKey") });
   if (!parsed.success) back("Saisie invalide — rechargez la page et réessayez");
   const { idempotencyKey } = parsed.data!;
@@ -55,7 +55,7 @@ export async function declareOwnDonation(formData: FormData) {
     if (isUniqueViolation(error)) back("Cette déclaration a déjà été envoyée (double soumission détectée)");
     throw error;
   }
-  redirect(`/dons?declare=${encodeURIComponent(receipt)}`);
+  redirect(`/resources?tab=dons&declare=${encodeURIComponent(receipt)}`);
 }
 
 /** An agent validates a declared donation: the validator becomes the responsible agent,
@@ -63,7 +63,7 @@ export async function declareOwnDonation(formData: FormData) {
 export async function validateDonation(formData: FormData) {
   const session = await requireWriteAccess("inventory:write");
   const transactionId = formData.get("transactionId");
-  if (typeof transactionId !== "string" || !transactionId) redirect("/dons");
+  if (typeof transactionId !== "string" || !transactionId) redirect("/resources?tab=dons");
   let covered = 0n;
   try {
     await prisma.$transaction(async (tx) => {
@@ -82,14 +82,14 @@ export async function validateDonation(formData: FormData) {
       await writeAudit(tx, { actorId: session.userId, action: "DONATION_APPROVED", entityType: "ResourceTransaction", entityId: transactionId, reason: `Validation de la déclaration ${transaction.receiptNumber}${applied.covered > 0n ? ` — ${Number(applied.covered).toLocaleString("fr-FR")} ¥ de taxes couverts par le crédit` : ""}` });
     });
   } catch (error) {
-    if (error instanceof Error && error.message.startsWith("VALIDATION:")) redirect(`/dons?erreur=${encodeURIComponent(error.message.slice("VALIDATION:".length))}`);
-    if (isUniqueViolation(error)) redirect("/dons?erreur=Mouvements%20d%C3%A9j%C3%A0%20appliqu%C3%A9s");
+    if (error instanceof Error && error.message.startsWith("VALIDATION:")) redirect(`/resources?tab=dons&erreur=${encodeURIComponent(error.message.slice("VALIDATION:".length))}`);
+    if (isUniqueViolation(error)) redirect("/resources?tab=dons&erreur=Mouvements%20d%C3%A9j%C3%A0%20appliqu%C3%A9s");
     throw error;
   }
   const message = covered > 0n
     ? `Déclaration validée — points crédités et ${Number(covered).toLocaleString("fr-FR")} ¥ de taxes couverts automatiquement par le crédit d’exonération`
     : "Déclaration validée — points et exonération crédités";
-  redirect(`/dons?info=${encodeURIComponent(message)}`);
+  redirect(`/resources?tab=dons&info=${encodeURIComponent(message)}`);
 }
 
 /** An agent refuses a declared donation: the line is cancelled, nothing is credited. */
@@ -98,7 +98,7 @@ export async function rejectDonation(formData: FormData) {
   const transactionId = formData.get("transactionId");
   const reasonRaw = formData.get("reason");
   const reason = typeof reasonRaw === "string" && reasonRaw.trim() ? reasonRaw.trim().slice(0, 300) : "Refusée sans motif détaillé";
-  if (typeof transactionId !== "string" || !transactionId) redirect("/dons");
+  if (typeof transactionId !== "string" || !transactionId) redirect("/resources?tab=dons");
   try {
     await prisma.$transaction(async (tx) => {
       const transaction = await tx.resourceTransaction.findUnique({ where: { id: transactionId } });
@@ -111,8 +111,8 @@ export async function rejectDonation(formData: FormData) {
       await writeAudit(tx, { actorId: session.userId, action: "DONATION_REJECTED", entityType: "ResourceTransaction", entityId: transactionId, reason: `Déclaration ${transaction.receiptNumber} refusée — ${reason}` });
     });
   } catch (error) {
-    if (error instanceof Error && error.message.startsWith("VALIDATION:")) redirect(`/dons?erreur=${encodeURIComponent(error.message.slice("VALIDATION:".length))}`);
+    if (error instanceof Error && error.message.startsWith("VALIDATION:")) redirect(`/resources?tab=dons&erreur=${encodeURIComponent(error.message.slice("VALIDATION:".length))}`);
     throw error;
   }
-  redirect("/dons?info=D%C3%A9claration%20refus%C3%A9e");
+  redirect("/resources?tab=dons&info=D%C3%A9claration%20refus%C3%A9e");
 }

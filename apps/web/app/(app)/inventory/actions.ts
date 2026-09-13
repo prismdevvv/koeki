@@ -25,7 +25,7 @@ const adjustmentSchema = z.object({
 export async function recordAdjustment(formData: FormData) {
   const session = await requireWriteAccess("inventory:write");
   const parsed = adjustmentSchema.safeParse(Object.fromEntries(formData));
-  const back = (message: string): never => redirect(`/inventory?erreur=${encodeURIComponent(message)}`);
+  const back = (message: string): never => redirect(`/resources?tab=inventaire&erreur=${encodeURIComponent(message)}`);
   if (!parsed.success) back(parsed.error.issues[0]?.message ?? "Saisie invalide");
   const { resourceId, quantity, justification, allowNegative, idempotencyKey } = parsed.data!;
   const overrideAllowed = allowNegative === "on" && hasPermission(session, "settings:manage");
@@ -46,5 +46,5 @@ export async function recordAdjustment(formData: FormData) {
     if (isUniqueViolation(error)) back("Ajustement déjà enregistré (double soumission détectée)");
     throw error;
   }
-  redirect("/inventory");
+  redirect("/resources?tab=inventaire");
 }

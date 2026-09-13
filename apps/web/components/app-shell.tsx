@@ -4,7 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import {
-  BarChart3, BookOpenText, Boxes, ChevronLeft, ChevronRight, FileText, HandCoins, HeartHandshake,
+  BarChart3, BookOpenText, ChevronLeft, ChevronRight, FileText, HandCoins,
   LayoutDashboard, LogOut, Menu, MessageCircleQuestion, PackageSearch, ScrollText, Settings, ShieldCheck, Trophy, UserCircle2, Users, X
 } from "lucide-react";
 import type { ShellInfo } from "@/lib/types";
@@ -22,8 +22,6 @@ const navigation: Array<{ label: string | null; items: Array<{ href: string; lab
   ] },
   { label: "Économie", items: [
     { href: "/resources", label: "Ressources", icon: PackageSearch },
-    { href: "/dons", label: "Dons", icon: HeartHandshake },
-    { href: "/inventory", label: "Inventaire", icon: Boxes },
     { href: "/crafting", label: "Artisanat", icon: BookOpenText },
     { href: "/equipement", label: "Équipement Jonin", icon: ShieldCheck }
   ] },

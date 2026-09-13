@@ -6,8 +6,8 @@ import { demoMode, hasPermission, requireSession, type SessionInfo } from "@/lib
 import { prisma } from "@koeki/database";
 
 function allowedNav(session: SessionInfo): string[] {
-  const base = ["/", "/profil", "/ninjas", "/resources", "/dons", "/crafting", "/events"];
-  if (hasPermission(session, "payments:write") || hasPermission(session, "audit:read")) base.push("/recouvrement", "/inventory", "/equipement", "/statistics");
+  const base = ["/", "/profil", "/ninjas", "/resources", "/crafting", "/events"];
+  if (hasPermission(session, "payments:write") || hasPermission(session, "audit:read")) base.push("/recouvrement", "/equipement", "/statistics");
   if (hasPermission(session, "reports:read")) base.push("/reports");
   if (hasPermission(session, "audit:read")) base.push("/audit");
   if (hasPermission(session, "users:manage") || hasPermission(session, "settings:manage")) base.push("/admin");
