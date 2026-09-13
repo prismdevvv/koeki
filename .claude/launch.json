@@ -6,6 +6,12 @@
       "runtimeExecutable": "node",
       "runtimeArgs": ["demo.cjs"],
       "port": 3005
+    },
+    {
+      "name": "koeki-dev",
+      "runtimeExecutable": "corepack",
+      "runtimeArgs": ["pnpm", "--filter", "@koeki/web", "dev"],
+      "port": 3000
     }
   ]
 }

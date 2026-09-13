@@ -1,5 +1,5 @@
 import type {
-  AdminData, AuditData, CraftingData, DashboardData, EventsData, InventoryData, NinjaDetailData, NinjaRow, NinjasData,
+  ActiveRosterData, AdminData, AuditData, CraftingData, DashboardData, EventsData, InventoryData, NinjaDetailData, NinjaRow, NinjasData,
   RecoveryData, ReportsData, ResourcesData, ShellInfo, StatisticsData
 } from "./types";
 
@@ -52,6 +52,11 @@ export const demoNinjaDetail: NinjaDetailData = {
 export const demoRecovery: RecoveryData = {
   metrics: { priorityDebt: 115000n, priorityCount: 3, averageLate: "2,7 ans RP", totalDebt: 143000n, unassigned: 2 },
   rows: ninjaRows.filter((ninja) => ninja.badge === "overdue").map((ninja) => ({ id: ninja.id, name: ninja.name, code: ninja.code, debt: ninja.debt, legacyWeeks: 0, due: ninja.due, agent: ninja.agent, lastContactedAt: null }))
+};
+
+export const demoActiveRoster: ActiveRosterData = {
+  metrics: { total: ninjaRows.length, unpaid: ninjaRows.filter((ninja) => ninja.badge === "overdue" || ninja.badge === "due").length, noFile: 0 },
+  rows: ninjaRows.map((ninja) => ({ name: ninja.name, rank: ninja.grade, hasFile: true, ninjaId: ninja.id, code: ninja.code, debt: ninja.debt, badge: ninja.badge, statusLabel: ninja.statusLabel, lastPlayedAt: "Aujourd’hui" }))
 };
 
 export const demoResources: ResourcesData = {

@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import {
   BarChart3, BookOpenText, Boxes, ChevronLeft, ChevronRight, FileText, HandCoins, HeartHandshake,
-  LayoutDashboard, LogOut, Menu, MessageCircleQuestion, PackageSearch, ScrollText, Search, Settings, ShieldCheck, Trophy, UserCircle2, Users, X
+  LayoutDashboard, LogOut, Menu, MessageCircleQuestion, PackageSearch, Radar, ScrollText, Search, Settings, ShieldCheck, Trophy, UserCircle2, Users, X
 } from "lucide-react";
 import type { ShellInfo } from "@/lib/types";
 
@@ -19,6 +19,7 @@ const navigation: Array<{ label: string | null; items: Array<{ href: string; lab
     { href: "/profil", label: "Ma fiche", icon: UserCircle2 },
     { href: "/ninjas", label: "Ninjas", icon: Users },
     { href: "/zenkai", label: "Recherche Zenkai", icon: Search },
+    { href: "/actifs", label: "Ninjas actifs", icon: Radar },
     { href: "/recouvrement", label: "Recouvrement", icon: HandCoins }
   ] },
   { label: "Économie", items: [
