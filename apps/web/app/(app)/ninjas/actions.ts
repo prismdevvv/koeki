@@ -7,7 +7,9 @@ import { exemptionUse, planLegacySettlement } from "@koeki/domain";
 import { getRpService, loadNinjaFiscal } from "@/lib/data";
 import { awardPoints, grantExemption, isUniqueViolation, loadExemptionPolicy, nextPaymentReceipt, nextTransactionReceipt, refreshAssessmentStatus, scaledTimes, withReceiptRetry, writeAudit } from "@/lib/finance";
 import { billCurrentWeekAfterGradeResolution } from "@/lib/grade-tax";
+import { findOrCreateNinjaProfileForCharacter } from "@/lib/ninja-link";
 import { demoMode, getSession, hasPermission, requireWriteAccess } from "@/lib/session";
+import { findSunaCharacterByCharKey } from "@/lib/zenkai";
 
 const createNinjaSchema = z.object({
   firstName: z.string().trim().min(1, "Le prénom est obligatoire").max(80),
@@ -565,4 +567,52 @@ export async function changeGrade(formData: FormData) {
     throw error;
   }
   redirect(`/ninjas/${ninjaId}?info=${encodeURIComponent(outcome)}`);
+}
+
+/** Opens the fiche for a Zenkai character reached straight from the registry
+ * search — creating it on the spot (grade mapped from the Zenkai rank) if none
+ * exists yet, so agents never have to go through a separate "create a fiche"
+ * step before acting on someone. */
+export async function openZenkaiCharacter(formData: FormData) {
+  const session = await requireWriteAccess("ninjas:write");
+  const charKey = formData.get("charKey");
+  if (typeof charKey !== "string" || !charKey) redirect("/ninjas");
+  const character = await findSunaCharacterByCharKey(charKey);
+  if (!character) redirect(`/ninjas?erreur=${encodeURIComponent("Personnage introuvable sur Zenkai — rafraîchissez la recherche")}`);
+  try {
+    const ninjaId = await findOrCreateNinjaProfileForCharacter(session.userId, character!);
+    redirect(`/ninjas/${ninjaId}`);
+  } catch (error) {
+    if (error instanceof Error && error.message.startsWith("VALIDATION:")) redirect(`/ninjas?erreur=${encodeURIComponent(error.message.slice("VALIDATION:".length))}`);
+    throw error;
+  }
+}
+
+const adjustPointsSchema = z.object({
+  ninjaId: z.string().min(1),
+  points: z.coerce.number().int("Nombre entier requis").refine((value) => value !== 0, "Indiquez un nombre de points non nul").min(-100_000).max(100_000),
+  reason: z.string().trim().min(3, "Un motif est obligatoire").max(300)
+});
+
+/** Manual point award/deduction outside the normal payment/donation flows —
+ * for one-off recognitions, corrections, or sanctions. Always audited. */
+export async function adjustPoints(formData: FormData) {
+  const session = await requireWriteAccess("ninjas:write");
+  const parsed = adjustPointsSchema.safeParse(Object.fromEntries(formData));
+  const rawNinjaId = typeof formData.get("ninjaId") === "string" ? String(formData.get("ninjaId")) : "";
+  const back = (message: string): never => redirect(`/ninjas/${rawNinjaId}?erreur=${encodeURIComponent(message)}`);
+  if (!parsed.success) back(parsed.error.issues[0]?.message ?? "Saisie invalide");
+  const { ninjaId, points, reason } = parsed.data!;
+  try {
+    await prisma.$transaction(async (tx) => {
+      const ninja = await tx.ninjaProfile.findUnique({ where: { id: ninjaId }, select: { status: true } });
+      if (!ninja || ninja.status !== "ACTIVE") throw new Error("VALIDATION:Dossier introuvable ou inactif");
+      await awardPoints(tx, { ninjaId, eventType: "MANUAL_ADJUSTMENT", amount: BigInt(points), sourceType: "ManualAdjustment", sourceId: crypto.randomUUID(), basePoints: points, reason });
+      await writeAudit(tx, { actorId: session.userId, action: "POINTS_ADJUSTED", entityType: "NinjaProfile", entityId: ninjaId, reason, newValues: { points } });
+    });
+  } catch (error) {
+    if (error instanceof Error && error.message.startsWith("VALIDATION:")) back(error.message.slice("VALIDATION:".length));
+    throw error;
+  }
+  redirect(`/ninjas/${ninjaId}?info=${encodeURIComponent(`${points > 0 ? "+" : ""}${points} point${Math.abs(points) > 1 ? "s" : ""} — motif consigné`)}`);
 }

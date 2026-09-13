@@ -7,7 +7,7 @@ import { SettlementItems } from "@/components/settlement-items";
 import { getNinjaDetail } from "@/lib/data";
 import { lateYearsLabel } from "@/lib/format";
 import { demoMode, hasPermission, requireSession } from "@/lib/session";
-import { changeGrade, recordPayment, waiveAssessment } from "../actions";
+import { adjustPoints, changeGrade, recordPayment, waiveAssessment } from "../actions";
 import { prisma } from "@koeki/database";
 import { parseExemptionPolicy } from "@koeki/domain";
 
@@ -113,6 +113,17 @@ export default async function NinjaDetailPage({ params, searchParams }: { params
           <label>Motif *<input type="text" name="reason" required minLength={3} maxLength={300} placeholder="Geste commercial, erreur…" /></label>
         </div>
         <div className="form-actions"><button className="button button-ghost" type="submit">Remettre cette semaine</button></div>
+      </form>
+    </section>}
+    {isActive && <section className="panel">
+      <SectionHeader title="Ajuster les points" description="Récompense ou correction ponctuelle, hors des flux normaux — motif obligatoire, audité" />
+      <form action={adjustPoints} className="form-grid">
+        <input type="hidden" name="ninjaId" value={data.id} />
+        <div className="form-row">
+          <label>Points (+ ou -)<input type="number" name="points" required step={1} placeholder="ex: 50 ou -20" /></label>
+          <label>Motif<input type="text" name="reason" required minLength={3} maxLength={300} placeholder="Récompense événement, correction…" /></label>
+        </div>
+        <div className="form-actions"><button className="button button-ghost" type="submit">Appliquer l’ajustement</button></div>
       </form>
     </section>}
   </div>;

@@ -164,7 +164,7 @@ export async function autoCoverOpenTaxes(tx: Tx, ninjaId: string, grantedById: s
 }
 
 /** Aggregates the per-unit base points and every active matching rule into a single ledger entry per (source, eventType) — the unique constraint makes double grants impossible. */
-export async function awardPoints(tx: Tx, input: { ninjaId: string; eventType: PointEventType; amount: bigint; sourceType: string; sourceId: string; basePoints?: number | undefined }) {
+export async function awardPoints(tx: Tx, input: { ninjaId: string; eventType: PointEventType; amount: bigint; sourceType: string; sourceId: string; basePoints?: number | undefined; reason?: string | undefined }) {
   const now = new Date();
   const rules = await tx.pointRule.findMany({ where: { eventType: input.eventType, isActive: true, startsAt: { lte: now }, OR: [{ endsAt: null }, { endsAt: { gt: now } }] } });
   let total = input.basePoints ?? 0;
@@ -179,7 +179,7 @@ export async function awardPoints(tx: Tx, input: { ninjaId: string; eventType: P
   }
   const existing = await tx.pointLedgerEntry.findUnique({ where: { sourceType_sourceId_eventType: { sourceType: input.sourceType, sourceId: input.sourceId, eventType: input.eventType } } });
   if (existing) return 0;
-  await tx.pointLedgerEntry.create({ data: { ninjaId: input.ninjaId, ruleId: rules[0]?.id ?? null, eventType: input.eventType, points: total, sourceType: input.sourceType, sourceId: input.sourceId } });
+  await tx.pointLedgerEntry.create({ data: { ninjaId: input.ninjaId, ruleId: rules[0]?.id ?? null, eventType: input.eventType, points: total, sourceType: input.sourceType, sourceId: input.sourceId, ...(input.reason !== undefined ? { reason: input.reason } : {}) } });
   return total;
 }
 

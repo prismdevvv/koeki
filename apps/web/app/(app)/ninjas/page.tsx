@@ -1,12 +1,13 @@
 import Link from "next/link";
 import { redirect } from "next/navigation";
-import { ArrowRight, Plus } from "lucide-react";
+import { ArrowRight, Plus, UserPlus } from "lucide-react";
 import { EmptyState, GradeBadge, MoneyDisplay, NinjaAvatar, PageHeader, PointDisplay, StatusBadge } from "@koeki/ui";
 import { NinjaFilters } from "@/components/ninja-filters";
 import { NinjaViews } from "@/components/ninja-views";
-import { getNinjas } from "@/lib/data";
+import { getNinjas, searchUnfiledZenkaiCharacters } from "@/lib/data";
 import { demoMode, hasPermission, requireSession } from "@/lib/session";
 import { prisma } from "@koeki/database";
+import { openZenkaiCharacter } from "./actions";
 
 export default async function NinjasPage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {
   const session = await requireSession();
@@ -22,6 +23,9 @@ export default async function NinjasPage({ searchParams }: { searchParams: Promi
   const canWrite = hasPermission(session, "ninjas:write");
   const info = typeof params.info === "string" ? params.info : null;
   const error = typeof params.erreur === "string" ? params.erreur : null;
+  // Search reaches straight into Zenkai's roster too — an agent can act on anyone by
+  // name, no manual "create a fiche first" step, the fiche is opened/created on demand.
+  const unfiled = canWrite && q ? await searchUnfiledZenkaiCharacters(q) : [];
   const table = <section className="panel ninja-table-panel">
     {data.ninjas.length ? <div className="table-scroll"><table className="ninja-table"><thead><tr><th>Ninja</th><th>Grade</th><th>Situation</th><th className="num">Dette</th><th className="num">Points</th><th>Agent</th><th>Échéance</th></tr></thead><tbody>{data.ninjas.map((ninja) => <tr key={ninja.code}><td><Link href={`/ninjas/${ninja.id}`} className="person-cell"><NinjaAvatar name={ninja.name} /><span><strong>{ninja.name}</strong><small>{ninja.code}{ninja.alias && ` · ${ninja.alias}`}</small></span></Link></td><td><GradeBadge>{ninja.grade}</GradeBadge></td><td><StatusBadge status={ninja.badge}>{ninja.statusLabel}</StatusBadge></td><td className={`num ${ninja.debt > 0n ? "negative" : "muted"}`}>{ninja.debt ? <MoneyDisplay amount={ninja.debt} /> : "Aucune"}</td><td className="num"><PointDisplay points={ninja.points} /></td><td>{ninja.agent}</td><td>{ninja.due}</td></tr>)}</tbody></table></div>
       : <EmptyState title="Aucun ninja trouvé" description="Ajustez la recherche ou les filtres — ou créez un nouveau dossier." />}
@@ -54,5 +58,13 @@ export default async function NinjasPage({ searchParams }: { searchParams: Promi
     <NinjaFilters grades={data.grades} />
     <NinjaViews table={table} cards={cards} />
     <footer className="panel table-footer ninja-register-footer"><span>{data.total ? `${data.total.toLocaleString("fr-FR")} ninja${data.total > 1 ? "s" : ""} affiché${data.total > 1 ? "s" : ""} · chaque nom ouvre son dossier` : "0 ninja"}</span></footer>
+    {unfiled.length > 0 && <section className="panel ninja-table-panel">
+      <header style={{ padding: "16px 20px 0" }}><h2 style={{ margin: 0, fontSize: 15 }}>Trouvés sur Zenkai, sans fiche Kōeki</h2><p className="muted" style={{ margin: "4px 0 0" }}>Ouvrez le dossier pour le créer et agir dessus (taxes, points, notes…).</p></header>
+      <div className="table-scroll"><table className="ninja-table"><tbody>{unfiled.map((character) => <tr key={character.charKey}>
+        <td><strong>{character.name}</strong></td>
+        <td><GradeBadge>{character.rank}</GradeBadge></td>
+        <td className="num"><form action={openZenkaiCharacter}><input type="hidden" name="charKey" value={character.charKey} /><button className="button button-ghost" type="submit"><UserPlus size={15} /> Ouvrir le dossier</button></form></td>
+      </tr>)}</tbody></table></div>
+    </section>}
   </div>;
 }

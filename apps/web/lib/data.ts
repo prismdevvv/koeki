@@ -1,11 +1,11 @@
 import { cache } from "react";
 import { prisma, type Prisma, type TaxAssessmentStatus } from "@koeki/database";
 import { allocatePayment, assessmentSettlementBreakdown, buildAgentScores, buildAmountBars, buildNinjaLeaderboard, buildTopResources, createRpTimeService, defaultRpTimeConfig, deriveTaxAssessmentStatus, parseExemptionPolicy, rateBps, rateDeltaBps, rpTimeConfigSchema, ryo, settlementTotals, simulateCraft, summarizeExemptionFlow, summarizeWeekCompliance, type AgentActivity, type DebtLine } from "@koeki/domain";
-import { demoActiveRoster, demoAdmin, demoAudit, demoCrafting, demoDashboard, demoEvents, demoInventory, demoNinjaDetail, demoNinjas, demoRecovery, demoReports, demoResources, demoShell, demoStatistics } from "./demo-data";
+import { demoAdmin, demoAudit, demoCrafting, demoDashboard, demoEvents, demoInventory, demoNinjaDetail, demoNinjas, demoRecovery, demoReports, demoResources, demoShell, demoStatistics } from "./demo-data";
 import { assessmentBadge, assessmentStatusLabels, formatDate, formatDateTime, lateYearsLabel, relativeTime, weekPeriod, type BadgeStatus } from "./format";
 import { normalizeReportHistoryRange } from "./report-period";
 import { demoMode, hasPermission, roleLabels, type SessionInfo } from "./session";
-import type { ActiveRosterData, ActiveRosterRow, AdminData, AuditData, CraftingData, DashboardData, EventsData, InventoryData, NinjaDetailData, NinjaRow, NinjasData, RecoveryData, ReportsData, ResourcesData, ShellInfo, StatisticsData } from "./types";
+import type { AdminData, AuditData, CraftingData, DashboardData, EventsData, InventoryData, NinjaDetailData, NinjaRow, NinjasData, RecoveryData, ReportsData, ResourcesData, ShellInfo, StatisticsData } from "./types";
 
 const sumBig = (values: bigint[]) => values.reduce((total, value) => total + value, 0n);
 const EXCLUDED: TaxAssessmentStatus[] = ["EXEMPT", "WAIVED", "SUSPENDED", "CANCELLED", "DRAFT"];
@@ -340,28 +340,16 @@ export async function markNinjasContacted(agentId: string, ninjaIds: string[]): 
 
 const normalizeName = (value: string) => value.normalize("NFKD").replace(/\p{M}/gu, "").replace(/\s+/g, " ").trim().toLocaleLowerCase("fr-FR");
 
-/** Cross-references Zenkai's live roster (played in the last 2 weeks) against
- * the koeki registry, so agents see at a glance who's actually active right
- * now and whether they're up to date on taxes — including characters that
- * never got a fiche created yet. */
-export async function getActiveRoster(): Promise<ActiveRosterData> {
-  if (demoMode) return demoActiveRoster;
-  const { getRecentlyActiveSunaCharacters, rankLabel } = await import("./zenkai");
-  const [characters, aggregates] = await Promise.all([getRecentlyActiveSunaCharacters(), loadNinjaAggregates()]);
-  const byName = new Map(aggregates.filter((ninja) => ninja.status === "ACTIVE").map((ninja) => [normalizeName(`${ninja.firstName} ${ninja.lastName}`), ninja]));
-  const rows: ActiveRosterRow[] = characters.map((character) => {
-    const match = byName.get(normalizeName(character.name));
-    return {
-      name: character.name, rank: rankLabel(character.rank), hasFile: Boolean(match),
-      ninjaId: match?.id ?? null, code: match?.code ?? null, debt: match?.debt ?? 0n,
-      badge: match?.badge ?? "pending", statusLabel: match?.statusLabel ?? "Aucune fiche Kōeki",
-      lastPlayedAt: character.lastPlayedAt ? formatDate(new Date(character.lastPlayedAt)) : null
-    };
-  }).sort((a, b) => (a.badge === "overdue") === (b.badge === "overdue") ? a.name.localeCompare(b.name, "fr") : a.badge === "overdue" ? -1 : 1);
-  return {
-    metrics: { total: rows.length, unpaid: rows.filter((row) => row.badge === "overdue" || row.badge === "due").length, noFile: rows.filter((row) => !row.hasFile).length },
-    rows
-  };
+/** Zenkai characters matching a name search that don't have a koeki fiche yet —
+ * shown alongside the registry search so agents can reach anyone directly by
+ * name, no manual "create a fiche first" step required. */
+export async function searchUnfiledZenkaiCharacters(query: string): Promise<Array<{ charKey: string; name: string; rank: string }>> {
+  if (demoMode || !query.trim()) return [];
+  const { searchSunaCharacters, rankLabel } = await import("./zenkai");
+  const [result, aggregates] = await Promise.all([searchSunaCharacters({ q: query }), loadNinjaAggregates()]);
+  const knownNames = new Set(aggregates.filter((ninja) => ninja.status !== "ARCHIVED").map((ninja) => normalizeName(`${ninja.firstName} ${ninja.lastName}`)));
+  return result.characters.filter((character) => !knownNames.has(normalizeName(character.name)))
+    .map((character) => ({ charKey: character.charKey, name: character.name, rank: rankLabel(character.rank) }));
 }
 
 export interface ResourceFilterParams { q?: string | undefined; categorie?: string | undefined; besoin?: string | undefined; etat?: string | undefined }

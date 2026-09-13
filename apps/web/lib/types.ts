@@ -29,9 +29,6 @@ export interface NinjaDetailData {
 export interface RecoveryRow { id: string; name: string; code: string; debt: bigint; legacyWeeks: number; due: string; agent: string; lastContactedAt: string | null }
 export interface RecoveryData { metrics: { priorityDebt: bigint; priorityCount: number; averageLate: string; totalDebt: bigint; unassigned: number }; rows: RecoveryRow[] }
 
-export interface ActiveRosterRow { name: string; rank: string; hasFile: boolean; ninjaId: string | null; code: string | null; debt: bigint; badge: BadgeStatus; statusLabel: string; lastPlayedAt: string | null }
-export interface ActiveRosterData { metrics: { total: number; unpaid: number; noFile: number }; rows: ActiveRosterRow[] }
-
 export interface ResourceRow { id: string; code: string; name: string; category: string; points: number; exemption: bigint; price: bigint; stock: number; badge: BadgeStatus; stateLabel: string; demand: "NONE" | "NEEDED" | "CRITICAL" }
 export interface ResourcesData {
   metrics: { buybackTotal: bigint; buybackCount: number; donationValue: bigint; donationCount: number; activeCount: number; totalCount: number };

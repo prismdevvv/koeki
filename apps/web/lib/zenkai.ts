@@ -44,6 +44,11 @@ export async function getRecentlyActiveSunaCharacters(days = 14): Promise<Zenkai
     .sort((a, b) => a.name.localeCompare(b.name, "fr"));
 }
 
+export async function findSunaCharacterByCharKey(charKey: string): Promise<ZenkaiCharacter | null> {
+  const all = await getSunaCharacters();
+  return all.find((character) => character.charKey === charKey) ?? null;
+}
+
 export async function findSunaCharacterByDiscordId(discordId: string): Promise<ZenkaiCharacter | null> {
   const all = await getSunaCharacters();
   const matches = all.filter((character) => character.discordId === discordId);
