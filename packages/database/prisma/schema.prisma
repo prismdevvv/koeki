@@ -4,8 +4,9 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
 }
 
 enum RoleCode {
@@ -151,6 +152,7 @@ model User {
   auditLogs          AuditLog[]
   reports            AgentReport[]  @relation("ReportAuthor")
   notifications      Notification[]
+  recoveryContacts   NinjaProfile[] @relation("NinjaRecoveryContact")
 }
 
 // OAuth token fields keep the snake_case names the Auth.js adapter writes verbatim.
@@ -256,11 +258,14 @@ model NinjaProfile {
   referenceAgentId     String?
   userId               String?               @unique
   notes                String?               @db.Text
+  lastContactedAt      DateTime?
+  lastContactedById    String?
   version              Int                   @default(1)
   createdAt            DateTime              @default(now())
   updatedAt            DateTime              @updatedAt
   currentGrade         NinjaGrade            @relation(fields: [currentGradeId], references: [id])
   user                 User?                 @relation(fields: [userId], references: [id])
+  lastContactedBy      User?                 @relation("NinjaRecoveryContact", fields: [lastContactedById], references: [id])
   invitations          Invitation[]
   gradeHistory         NinjaGradeHistory[]
   assessments          TaxAssessment[]

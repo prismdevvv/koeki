@@ -298,7 +298,47 @@ async function refreshStats() {
   return { command: "stats:refresh", ...value };
 }
 
-const commands: Record<string, () => Promise<unknown>> = { "taxes:generate": generateTaxes, "penalties:apply": applyPenalties, "reminders:send": sendReminders, "inventory:check": checkInventory, "stats:refresh": refreshStats };
+/** Posts a consolidated overdue-debt digest to a Discord channel webhook, so
+ * economic agents see the recovery queue without opening the app. Purely
+ * additive to `sendReminders` (which notifies each ninja in-app) — this is a
+ * team-facing summary, not a per-ninja notification. No-ops if unconfigured. */
+async function notifyRecoveryDiscord() {
+  const webhookUrl = process.env.RECOVERY_WEBHOOK_URL;
+  if (!webhookUrl) return { command: "reminders:discord", skipped: true, reason: "RECOVERY_WEBHOOK_URL not set" };
+  const minDebt = BigInt(process.env.RECOVERY_WEBHOOK_MIN_DEBT ?? "0");
+  const assessments = await prisma.taxAssessment.findMany({
+    where: { ninja: { status: "ACTIVE" }, dueAt: { lt: new Date() }, status: { in: ["DUE", "OVERDUE", "PARTIALLY_PAID"] }, originalAmount: { gt: 0 } },
+    include: { penalties: true, adjustments: true, exemptions: true, allocations: { include: { payment: { select: { status: true } } } }, ninja: { select: { id: true, firstName: true, lastName: true, code: true } } }
+  });
+  const debtByNinja = new Map<string, { name: string; code: string; debt: bigint }>();
+  for (const assessment of assessments) {
+    const paid = assessment.allocations.filter((entry) => entry.payment.status === "VALIDATED").reduce((sum, entry) => sum + entry.amount, 0n);
+    const remaining = assessment.originalAmount
+      + assessment.penalties.reduce((sum, entry) => sum + entry.amount, 0n)
+      + assessment.adjustments.reduce((sum, entry) => sum + entry.amount, 0n)
+      - assessment.exemptions.reduce((sum, entry) => sum + entry.amount, 0n)
+      - paid;
+    if (remaining <= 0n) continue;
+    const entry = debtByNinja.get(assessment.ninja.id) ?? { name: `${assessment.ninja.firstName} ${assessment.ninja.lastName}`, code: assessment.ninja.code, debt: 0n };
+    entry.debt += remaining;
+    debtByNinja.set(assessment.ninja.id, entry);
+  }
+  const overdue = [...debtByNinja.values()].filter((entry) => entry.debt >= minDebt).sort((a, b) => (b.debt > a.debt ? 1 : b.debt < a.debt ? -1 : 0));
+  if (!overdue.length) return { command: "reminders:discord", sent: false, reason: "no overdue debt above threshold" };
+  const top = overdue.slice(0, 15);
+  const lines = top.map((entry, index) => `**${index + 1}.** ${entry.name} (\`${entry.code}\`) — ${entry.debt.toLocaleString("fr-FR")} ¥`);
+  const remainder = overdue.length - top.length;
+  const description = lines.join("\n") + (remainder > 0 ? `\n*…et ${remainder} autre${remainder > 1 ? "s" : ""} dossier${remainder > 1 ? "s" : ""}.*` : "");
+  const response = await fetch(webhookUrl, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ embeds: [{ title: `Recouvrement — ${overdue.length} dossier${overdue.length > 1 ? "s" : ""} en retard`, description, color: 0xdc2626, timestamp: new Date().toISOString() }] })
+  });
+  if (!response.ok) throw new Error(`Discord webhook responded ${response.status}`);
+  return { command: "reminders:discord", sent: true, count: overdue.length };
+}
+
+const commands: Record<string, () => Promise<unknown>> = { "taxes:generate": generateTaxes, "penalties:apply": applyPenalties, "reminders:send": sendReminders, "reminders:discord": notifyRecoveryDiscord, "inventory:check": checkInventory, "stats:refresh": refreshStats };
 async function main() {
   const command = process.argv[2] ?? "all";
   const selected = command === "all" ? Object.values(commands) : [commands[command]];

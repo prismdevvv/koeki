@@ -44,6 +44,7 @@ interface NinjaAggregate {
   id: string; code: string; firstName: string; lastName: string; alias: string | null; clan: string | null; status: string; diedAt: Date | null;
   gradeCode: string; gradeLabel: string; referenceAgentId: string | null; userId: string | null; notes: string | null;
   points: number; debt: bigint; lateYears: number; legacyLate: number; badge: BadgeStatus; statusLabel: string; due: string; nextDueAt: Date | null; assessments: AssessmentAggregate[];
+  lastContactedAt: Date | null;
 }
 
 function computeAssessment(assessment: {
@@ -108,7 +109,8 @@ const loadNinjaAggregates = cache(async (): Promise<NinjaAggregate[]> => {
     return {
       id: ninja.id, code: ninja.code, firstName: ninja.firstName, lastName: ninja.lastName, alias: ninja.alias, clan: ninja.clan, status: ninja.status, diedAt: ninja.diedAt,
       gradeCode: ninja.currentGrade.code, gradeLabel: ninja.currentGrade.label, referenceAgentId: ninja.referenceAgentId, userId: ninja.userId, notes: ninja.notes,
-      points: ninja.pointEntries.reduce((total, entry) => total + entry.points, 0), debt, lateYears, legacyLate, badge, statusLabel, due, nextDueAt: upcoming?.dueAt ?? null, assessments
+      points: ninja.pointEntries.reduce((total, entry) => total + entry.points, 0), debt, lateYears, legacyLate, badge, statusLabel, due, nextDueAt: upcoming?.dueAt ?? null, assessments,
+      lastContactedAt: ninja.lastContactedAt
     };
   });
 });
@@ -324,10 +326,16 @@ export async function getRecovery(): Promise<RecoveryData> {
       totalDebt: sumBig(overdue.map((ninja) => ninja.debt)), unassigned: legacyOnly.length
     },
     rows: [
-      ...overdue.map((ninja) => ({ id: ninja.id, name: `${ninja.firstName} ${ninja.lastName}`, code: ninja.code, debt: ninja.debt, legacyWeeks: ninja.legacyLate, due: ninja.due, agent: agentName(ninja) })),
-      ...legacyOnly.map((ninja) => ({ id: ninja.id, name: `${ninja.firstName} ${ninja.lastName}`, code: ninja.code, debt: 0n, legacyWeeks: ninja.legacyLate, due: ninja.due, agent: agentName(ninja) }))
+      ...overdue.map((ninja) => ({ id: ninja.id, name: `${ninja.firstName} ${ninja.lastName}`, code: ninja.code, debt: ninja.debt, legacyWeeks: ninja.legacyLate, due: ninja.due, agent: agentName(ninja), lastContactedAt: ninja.lastContactedAt ? formatDate(ninja.lastContactedAt) : null })),
+      ...legacyOnly.map((ninja) => ({ id: ninja.id, name: `${ninja.firstName} ${ninja.lastName}`, code: ninja.code, debt: 0n, legacyWeeks: ninja.legacyLate, due: ninja.due, agent: agentName(ninja), lastContactedAt: ninja.lastContactedAt ? formatDate(ninja.lastContactedAt) : null }))
     ]
   };
+}
+
+export async function markNinjasContacted(agentId: string, ninjaIds: string[]): Promise<number> {
+  if (!ninjaIds.length) return 0;
+  const result = await prisma.ninjaProfile.updateMany({ where: { id: { in: ninjaIds }, status: "ACTIVE" }, data: { lastContactedAt: new Date(), lastContactedById: agentId } });
+  return result.count;
 }
 
 export interface ResourceFilterParams { q?: string | undefined; categorie?: string | undefined; besoin?: string | undefined; etat?: string | undefined }

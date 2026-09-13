@@ -1,0 +1,52 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+env:
+  DEMO_MODE: "true"
+  DATABASE_URL: "postgresql://koeki:koeki@127.0.0.1:5432/koeki?schema=public"
+  DIRECT_URL: "postgresql://koeki:koeki@127.0.0.1:5432/koeki?schema=public"
+  AUTH_SECRET: "ci-only-secret-at-least-32-characters-long"
+  APP_URL: "http://localhost:3000"
+  AUTH_URL: "http://localhost:3000"
+  AUTH_TRUST_HOST: "true"
+  DISCORD_CLIENT_ID: "ci-client"
+  DISCORD_CLIENT_SECRET: "ci-secret"
+  DISCORD_GUILD_ID: "ci-guild"
+  INVITE_TOKEN_PEPPER: "ci-invite-pepper-value"
+  INTERNAL_CRON_SECRET: "ci-cron-secret-value"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "pnpm"
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Generate Prisma client
+        run: pnpm db:generate
+
+      - name: Lint
+        run: pnpm lint
+
+      - name: Typecheck
+        run: pnpm typecheck
+
+      - name: Test
+        run: pnpm test
+
+      - name: Build
+        run: pnpm build
