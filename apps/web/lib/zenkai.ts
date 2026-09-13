@@ -44,6 +44,19 @@ export async function getRecentlyActiveSunaCharacters(days = 14): Promise<Zenkai
     .sort((a, b) => a.name.localeCompare(b.name, "fr"));
 }
 
+/** Maps the "logistique" Suna division (the Kōeki service on Zenkai) to a koeki
+ * RBAC role. Real grade titles vary by sub-team ("Gerant Economique", "Co-Gérant",
+ * "Responsable B.R.A.C", "Membre Shomu", "Membre B.R.A.C"…) so this matches on the
+ * governing word rather than the full string. "Stagiaire" (trainee) or no division
+ * at all keeps the account at the base Ninja role — not staff yet. */
+export function logistiqueRoleFor(character: ZenkaiCharacter): "KOEKI_MANAGER" | "ECONOMIC_AGENT" | null {
+  const division = character.divisions.find((entry) => entry.faction === "Suna" && entry.type === "logistique");
+  const grade = division?.grade ?? "";
+  if (/g[ée]rant|responsable/i.test(grade)) return "KOEKI_MANAGER";
+  if (/membre/i.test(grade)) return "ECONOMIC_AGENT";
+  return null;
+}
+
 export async function findSunaCharacterByCharKey(charKey: string): Promise<ZenkaiCharacter | null> {
   const all = await getSunaCharacters();
   return all.find((character) => character.charKey === charKey) ?? null;

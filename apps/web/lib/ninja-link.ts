@@ -1,5 +1,5 @@
 import { Prisma, prisma } from "@koeki/database";
-import type { ZenkaiCharacter } from "./zenkai";
+import { logistiqueRoleFor, type ZenkaiCharacter } from "./zenkai";
 
 // Miroir du mapping de rangs Zenkai (`apps/web/lib/zenkai.ts`) vers les codes de grade Kōeki
 // définis au bootstrap (`packages/database/prisma/bootstrap.ts`).
@@ -65,6 +65,33 @@ export async function linkOrCreateNinjaForZenkaiCharacter(userId: string, charac
     await tx.auditLog.create({ data: { actorId: userId, action: "NINJA_SELF_REGISTERED", entityType: "NinjaProfile", entityId: ninja.id, newValues: { code, firstName, lastName, grade: grade.code }, requestId: crypto.randomUUID() } });
   }).catch((error) => {
     console.warn(`[ninja-link] liaison auto impossible pour ${userId} : ${error instanceof Error ? error.message : String(error)}`);
+  });
+}
+
+const MANAGED_STAFF_ROLES = ["KOEKI_MANAGER", "ECONOMIC_AGENT"] as const;
+
+/**
+ * Resyncs a Discord account's Kōeki staff role from its Zenkai "logistique"
+ * division on every sign-in — the division is the source of truth, so a
+ * promotion/demotion in-game takes effect at the next login with no admin
+ * action needed. Only ever touches KOEKI_MANAGER/ECONOMIC_AGENT: SUPER_ADMIN,
+ * AUDITOR and the base NINJA role are never granted or revoked by this sync.
+ */
+export async function syncLogistiqueRole(userId: string, character: ZenkaiCharacter): Promise<void> {
+  const target = logistiqueRoleFor(character);
+  const roles = await prisma.role.findMany({ where: { code: { in: [...MANAGED_STAFF_ROLES] } } });
+  const roleIdByCode = new Map(roles.map((role) => [role.code, role.id]));
+  const current = await prisma.userRole.findMany({ where: { userId, roleId: { in: roles.map((role) => role.id) } }, include: { role: true } });
+  const currentCodes = new Set(current.map((entry) => entry.role.code));
+  const toAdd = target && !currentCodes.has(target) ? [target] : [];
+  const toRemove = MANAGED_STAFF_ROLES.filter((code) => code !== target && currentCodes.has(code));
+  if (!toAdd.length && !toRemove.length) return;
+  await prisma.$transaction(async (tx) => {
+    if (toRemove.length) await tx.userRole.deleteMany({ where: { userId, roleId: { in: toRemove.map((code) => roleIdByCode.get(code)!) } } });
+    if (toAdd.length) await tx.userRole.createMany({ data: toAdd.map((code) => ({ userId, roleId: roleIdByCode.get(code)!, assignedById: userId })) });
+    await tx.auditLog.create({ data: { actorId: userId, action: "ROLE_SYNCED_FROM_ZENKAI", entityType: "User", entityId: userId, requestId: crypto.randomUUID(), reason: "Synchronisation du rôle Kōeki depuis la division logistique Zenkai", newValues: { target, added: toAdd, removed: toRemove } } });
+  }).catch((error) => {
+    console.warn(`[ninja-link] synchronisation du rôle impossible pour ${userId} : ${error instanceof Error ? error.message : String(error)}`);
   });
 }
 

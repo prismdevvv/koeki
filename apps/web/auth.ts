@@ -5,7 +5,7 @@ import { cookies } from "next/headers";
 import { hashInvitationToken, isInvitationUsable } from "@koeki/auth";
 import { prisma } from "@koeki/database";
 import { findSunaCharacterByDiscordId } from "./lib/zenkai";
-import { linkOrCreateNinjaForZenkaiCharacter } from "./lib/ninja-link";
+import { linkOrCreateNinjaForZenkaiCharacter, syncLogistiqueRole } from "./lib/ninja-link";
 
 const refuse = (reason: string) => { console.warn(`[auth] connexion refusée : ${reason}`); return false; };
 
@@ -119,7 +119,12 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
     async signIn({ user, account }) {
       if (account?.provider !== "discord" || !user.id) return;
       const character = await findSunaCharacterByDiscordId(account.providerAccountId).catch(() => null);
-      if (character) await linkOrCreateNinjaForZenkaiCharacter(user.id, character);
+      if (character) {
+        await linkOrCreateNinjaForZenkaiCharacter(user.id, character);
+        // Kōeki staff role (manager/agent) resynced from the Zenkai "logistique" division on
+        // every login — a promotion or removal in-game takes effect immediately, no admin step.
+        await syncLogistiqueRole(user.id, character);
+      }
     }
   }
 });
