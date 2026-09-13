@@ -3,13 +3,12 @@
 import { redirect } from "next/navigation";
 import { z } from "zod";
 import { Prisma, prisma } from "@koeki/database";
-import { activePrice, applyValidatedTransaction, isUniqueViolation, lockActiveNinja, lockResources, nextTransactionReceipt, parseFourDecimal, scaledTimes, withReceiptRetry, writeAudit } from "@/lib/finance";
+import { activePrice, applyValidatedTransaction, canApproveBuybacks, executeResourceTransaction, isUniqueViolation, lockActiveNinja, lockResources, MAX_TRANSACTION_UNIT_PRICE, parseFourDecimal, parseTransactionLines, writeAudit } from "@/lib/finance";
 import { findOrCreateNinjaProfileForCharacter } from "@/lib/ninja-link";
 import { requireWriteAccess } from "@/lib/session";
 import { getRecentlyActiveSunaCharacters } from "@/lib/zenkai";
 
-const MAX_UNIT_PRICE = 100_000_000;
-const canApproveBuybacks = (roles: readonly string[]) => roles.some((role) => role === "SUPER_ADMIN" || role === "KOEKI_MANAGER");
+const MAX_UNIT_PRICE = MAX_TRANSACTION_UNIT_PRICE;
 
 const transactionSchema = z.object({
   type: z.enum(["DONATION", "BUYBACK"]),
@@ -31,53 +30,11 @@ export async function recordResourceTransaction(formData: FormData) {
     if (error instanceof Error && error.message.startsWith("VALIDATION:")) back(error.message.slice("VALIDATION:".length));
     throw error;
   });
-  const lines: Array<{ resourceId: string; quantity: number; negotiated: bigint | null }> = [];
-  for (let index = 1; index <= 8; index++) {
-    const resourceId = formData.get(`resourceId_${index}`);
-    const quantityRaw = formData.get(`quantity_${index}`);
-    if (typeof resourceId === "string" && resourceId && typeof quantityRaw === "string" && quantityRaw) {
-      const quantity = parseFourDecimal(quantityRaw) ?? back(`Quantité invalide sur la ligne ${index} (4 décimales maximum)`);
-      if (quantity <= 0 || quantity > 1_000_000) back(`Quantité invalide sur la ligne ${index} (entre 0,0001 et 1 000 000)`);
-      if (lines.some((line) => line.resourceId === resourceId)) back("Une même ressource apparaît deux fois");
-      // Buyback price is negotiable downwards: the agent may enter a unit price below the catalog maximum.
-      let negotiated: bigint | null = null;
-      const priceRaw = formData.get(`unitPrice_${index}`);
-      if (type === "BUYBACK" && typeof priceRaw === "string" && priceRaw !== "") {
-        const price = Number(priceRaw);
-        if (!Number.isSafeInteger(price) || price < 1 || price > MAX_UNIT_PRICE) back(`Prix négocié invalide sur la ligne ${index} (entier en Ryō, de 1 à ${MAX_UNIT_PRICE.toLocaleString("fr-FR")})`);
-        negotiated = BigInt(price);
-      }
-      lines.push({ resourceId, quantity, negotiated });
-    }
-  }
-  if (!lines.length) back("Ajoutez au moins une ressource — tapez son nom puis choisissez une proposition de la liste");
+  const parsedLines = parseTransactionLines(formData, type);
+  const lines = "error" in parsedLines ? back(parsedLines.error) : parsedLines.lines;
   let receipt = "";
   try {
-    receipt = await withReceiptRetry(() => prisma.$transaction(async (tx) => {
-      if (!await lockActiveNinja(tx, ninjaId)) throw new Error("VALIDATION:Ninja introuvable ou dossier inactif");
-      const items: Array<{ resourceId: string; quantity: number; unitPrice: bigint; lineTotal: bigint; exemptionPerUnit: bigint; pointsPerUnit: number }> = [];
-      for (const line of lines) {
-        const resource = await tx.resource.findUnique({ where: { id: line.resourceId } });
-        if (!resource || !resource.isActive) throw new Error("VALIDATION:Ressource inconnue ou inactive");
-        const price = await activePrice(tx, line.resourceId);
-        if (type === "BUYBACK" && (price === null || price <= 0n)) throw new Error(`VALIDATION:Aucun prix actif pour ${resource.name} — configurez-le avant tout rachat`);
-        if (type === "BUYBACK" && line.negotiated !== null && price !== null && line.negotiated > price) throw new Error(`VALIDATION:Prix négocié au-dessus du catalogue pour ${resource.name} (maximum ${Number(price).toLocaleString("fr-FR")} ¥/u)`);
-        const unitPrice = type === "BUYBACK" && line.negotiated !== null ? line.negotiated : price ?? 0n;
-        items.push({ resourceId: line.resourceId, quantity: line.quantity, unitPrice, lineTotal: scaledTimes(line.quantity, unitPrice), exemptionPerUnit: resource.exemptionPerUnit, pointsPerUnit: resource.pointsPerUnit });
-      }
-      const totalAmount = items.reduce((total, item) => total + item.lineTotal, 0n);
-      const approvalSetting = await tx.appSetting.findUnique({ where: { key: "approvalThreshold" } });
-      const approval = approvalSetting?.value as { amount?: string; isValidated?: boolean } | undefined;
-      const needsApproval = type === "BUYBACK" && approval?.isValidated === true && totalAmount > BigInt(approval.amount ?? "50000") && !canApproveBuybacks(session.roles);
-      const receiptNumber = await nextTransactionReceipt(tx, type);
-      const transaction = await tx.resourceTransaction.create({ data: {
-        receiptNumber, type, status: needsApproval ? "PENDING_APPROVAL" : "VALIDATED", ninjaId, agentId: session.userId, totalAmount, idempotencyKey, validatedAt: needsApproval ? null : new Date()
-      } });
-      await tx.resourceTransactionItem.createMany({ data: items.map((item) => ({ transactionId: transaction.id, resourceId: item.resourceId, quantity: new Prisma.Decimal(item.quantity), unitPriceSnapshot: item.unitPrice, lineTotal: item.lineTotal })) });
-      if (!needsApproval) await applyValidatedTransaction(tx, { id: transaction.id, type, ninjaId, receiptNumber, totalAmount, idempotencyKey }, items, session.userId);
-      await writeAudit(tx, { actorId: session.userId, action: type === "BUYBACK" ? (needsApproval ? "BUYBACK_PENDING_APPROVAL" : "BUYBACK_RECORDED") : "DONATION_RECORDED", entityType: "ResourceTransaction", entityId: transaction.id, reason: `${type === "BUYBACK" ? "Rachat" : "Don"} ${receiptNumber} — ${Number(totalAmount)} Ryō`, newValues: { items: items.map((item) => ({ resourceId: item.resourceId, quantity: item.quantity, unitPrice: Number(item.unitPrice) })) } });
-      return receiptNumber;
-    }));
+    receipt = await executeResourceTransaction(session, ninjaId, type, lines, idempotencyKey);
   } catch (error) {
     if (error instanceof Error && error.message.startsWith("VALIDATION:")) back(error.message.slice("VALIDATION:".length));
     if (isUniqueViolation(error)) back("Cette transaction a déjà été enregistrée (double soumission détectée)");

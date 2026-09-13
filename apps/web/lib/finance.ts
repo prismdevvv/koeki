@@ -1,8 +1,9 @@
-import { Prisma, type PointEventType, type TaxAssessmentStatus } from "@koeki/database";
+import { Prisma, prisma, type PointEventType, type TaxAssessmentStatus } from "@koeki/database";
 import {
   calculatePoints, createRpTimeService, defaultRpTimeConfig, deriveTaxAssessmentStatus,
   EXEMPTION_POLICY_SETTING_KEY, exemptionUse, parseExemptionPolicy, rpTimeConfigSchema
 } from "@koeki/domain";
+import type { SessionInfo } from "@/lib/session";
 
 export type Tx = Prisma.TransactionClient;
 
@@ -245,4 +246,69 @@ export async function withReceiptRetry<T>(run: () => Promise<T>): Promise<T> {
     catch (error) { if (uniqueViolationTarget(error).includes("receiptNumber")) { lastError = error; continue; } throw error; }
   }
   throw lastError;
+}
+
+export const MAX_TRANSACTION_UNIT_PRICE = 100_000_000;
+export const canApproveBuybacks = (roles: readonly string[]) => roles.some((role) => role === "SUPER_ADMIN" || role === "KOEKI_MANAGER");
+
+export type TransactionLine = { resourceId: string; quantity: number; negotiated: bigint | null };
+
+/** Reads the resourceId_N / quantity_N / unitPrice_N fields shared by every
+ * donation/buyback form (whole-catalog picker or a ninja fiche's own donation
+ * panel). Returns a validation message instead of throwing so each caller can
+ * redirect back to its own page with the right query string. */
+export function parseTransactionLines(formData: FormData, type: "DONATION" | "BUYBACK", maxLines = 8): { lines: TransactionLine[] } | { error: string } {
+  const lines: TransactionLine[] = [];
+  for (let index = 1; index <= maxLines; index++) {
+    const resourceId = formData.get(`resourceId_${index}`);
+    const quantityRaw = formData.get(`quantity_${index}`);
+    if (typeof resourceId === "string" && resourceId && typeof quantityRaw === "string" && quantityRaw) {
+      const quantity = parseFourDecimal(quantityRaw);
+      if (quantity === null) return { error: `Quantité invalide sur la ligne ${index} (4 décimales maximum)` };
+      if (quantity <= 0 || quantity > 1_000_000) return { error: `Quantité invalide sur la ligne ${index} (entre 0,0001 et 1 000 000)` };
+      if (lines.some((line) => line.resourceId === resourceId)) return { error: "Une même ressource apparaît deux fois" };
+      // Buyback price is negotiable downwards: the agent may enter a unit price below the catalog maximum.
+      let negotiated: bigint | null = null;
+      const priceRaw = formData.get(`unitPrice_${index}`);
+      if (type === "BUYBACK" && typeof priceRaw === "string" && priceRaw !== "") {
+        const price = Number(priceRaw);
+        if (!Number.isSafeInteger(price) || price < 1 || price > MAX_TRANSACTION_UNIT_PRICE) return { error: `Prix négocié invalide sur la ligne ${index} (entier en Ryō, de 1 à ${MAX_TRANSACTION_UNIT_PRICE.toLocaleString("fr-FR")})` };
+        negotiated = BigInt(price);
+      }
+      lines.push({ resourceId, quantity, negotiated });
+    }
+  }
+  if (!lines.length) return { error: "Ajoutez au moins une ressource — tapez son nom puis choisissez une proposition de la liste" };
+  return { lines };
+}
+
+/** Core of every donation/buyback write — shared by the whole-catalog picker
+ * (which resolves ninjaId from a Zenkai character first) and a ninja fiche's
+ * own donation panel (where ninjaId is already known). */
+export async function executeResourceTransaction(session: SessionInfo, ninjaId: string, type: "DONATION" | "BUYBACK", lines: TransactionLine[], idempotencyKey: string): Promise<string> {
+  return withReceiptRetry(() => prisma.$transaction(async (tx) => {
+    if (!await lockActiveNinja(tx, ninjaId)) throw new Error("VALIDATION:Ninja introuvable ou dossier inactif");
+    const items: Array<{ resourceId: string; quantity: number; unitPrice: bigint; lineTotal: bigint; exemptionPerUnit: bigint; pointsPerUnit: number }> = [];
+    for (const line of lines) {
+      const resource = await tx.resource.findUnique({ where: { id: line.resourceId } });
+      if (!resource || !resource.isActive) throw new Error("VALIDATION:Ressource inconnue ou inactive");
+      const price = await activePrice(tx, line.resourceId);
+      if (type === "BUYBACK" && (price === null || price <= 0n)) throw new Error(`VALIDATION:Aucun prix actif pour ${resource.name} — configurez-le avant tout rachat`);
+      if (type === "BUYBACK" && line.negotiated !== null && price !== null && line.negotiated > price) throw new Error(`VALIDATION:Prix négocié au-dessus du catalogue pour ${resource.name} (maximum ${Number(price).toLocaleString("fr-FR")} ¥/u)`);
+      const unitPrice = type === "BUYBACK" && line.negotiated !== null ? line.negotiated : price ?? 0n;
+      items.push({ resourceId: line.resourceId, quantity: line.quantity, unitPrice, lineTotal: scaledTimes(line.quantity, unitPrice), exemptionPerUnit: resource.exemptionPerUnit, pointsPerUnit: resource.pointsPerUnit });
+    }
+    const totalAmount = items.reduce((total, item) => total + item.lineTotal, 0n);
+    const approvalSetting = await tx.appSetting.findUnique({ where: { key: "approvalThreshold" } });
+    const approval = approvalSetting?.value as { amount?: string; isValidated?: boolean } | undefined;
+    const needsApproval = type === "BUYBACK" && approval?.isValidated === true && totalAmount > BigInt(approval.amount ?? "50000") && !canApproveBuybacks(session.roles);
+    const receiptNumber = await nextTransactionReceipt(tx, type);
+    const transaction = await tx.resourceTransaction.create({ data: {
+      receiptNumber, type, status: needsApproval ? "PENDING_APPROVAL" : "VALIDATED", ninjaId, agentId: session.userId, totalAmount, idempotencyKey, validatedAt: needsApproval ? null : new Date()
+    } });
+    await tx.resourceTransactionItem.createMany({ data: items.map((item) => ({ transactionId: transaction.id, resourceId: item.resourceId, quantity: new Prisma.Decimal(item.quantity), unitPriceSnapshot: item.unitPrice, lineTotal: item.lineTotal })) });
+    if (!needsApproval) await applyValidatedTransaction(tx, { id: transaction.id, type, ninjaId, receiptNumber, totalAmount, idempotencyKey }, items, session.userId);
+    await writeAudit(tx, { actorId: session.userId, action: type === "BUYBACK" ? (needsApproval ? "BUYBACK_PENDING_APPROVAL" : "BUYBACK_RECORDED") : "DONATION_RECORDED", entityType: "ResourceTransaction", entityId: transaction.id, reason: `${type === "BUYBACK" ? "Rachat" : "Don"} ${receiptNumber} — ${Number(totalAmount).toLocaleString("fr-FR")} Ryō`, newValues: { items: items.map((item) => ({ resourceId: item.resourceId, quantity: item.quantity, unitPrice: Number(item.unitPrice) })) } });
+    return receiptNumber;
+  }));
 }

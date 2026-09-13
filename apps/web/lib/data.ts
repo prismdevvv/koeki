@@ -340,15 +340,17 @@ export async function markNinjasContacted(agentId: string, ninjaIds: string[]): 
 
 const normalizeName = (value: string) => value.normalize("NFKD").replace(/\p{M}/gu, "").replace(/\s+/g, " ").trim().toLocaleLowerCase("fr-FR");
 
-/** Zenkai characters matching a name search that don't have a koeki fiche yet —
- * shown alongside the registry search so agents can reach anyone directly by
- * name, no manual "create a fiche first" step required. */
+/** Zenkai characters (active in the last 2 weeks — no point surfacing someone
+ * who hasn't played in months) matching a name search, that don't have a
+ * koeki fiche yet — shown alongside the registry search so agents can reach
+ * anyone directly by name, no manual "create a fiche first" step required. */
 export async function searchUnfiledZenkaiCharacters(query: string): Promise<Array<{ charKey: string; name: string; rank: string }>> {
   if (demoMode || !query.trim()) return [];
-  const { searchSunaCharacters, rankLabel } = await import("./zenkai");
-  const [result, aggregates] = await Promise.all([searchSunaCharacters({ q: query }), loadNinjaAggregates()]);
+  const { getRecentlyActiveSunaCharacters, rankLabel } = await import("./zenkai");
+  const [characters, aggregates] = await Promise.all([getRecentlyActiveSunaCharacters(), loadNinjaAggregates()]);
   const knownNames = new Set(aggregates.filter((ninja) => ninja.status !== "ARCHIVED").map((ninja) => normalizeName(`${ninja.firstName} ${ninja.lastName}`)));
-  return result.characters.filter((character) => !knownNames.has(normalizeName(character.name)))
+  const q = query.trim().toLowerCase();
+  return characters.filter((character) => character.name.toLowerCase().includes(q) && !knownNames.has(normalizeName(character.name)))
     .map((character) => ({ charKey: character.charKey, name: character.name, rank: rankLabel(character.rank) }));
 }
 

@@ -5,7 +5,7 @@ import { z } from "zod";
 import { Prisma, prisma } from "@koeki/database";
 import { exemptionUse, planLegacySettlement } from "@koeki/domain";
 import { getRpService, loadNinjaFiscal } from "@/lib/data";
-import { awardPoints, grantExemption, isUniqueViolation, loadExemptionPolicy, nextPaymentReceipt, nextTransactionReceipt, refreshAssessmentStatus, scaledTimes, withReceiptRetry, writeAudit } from "@/lib/finance";
+import { awardPoints, executeResourceTransaction, grantExemption, isUniqueViolation, loadExemptionPolicy, nextPaymentReceipt, nextTransactionReceipt, parseTransactionLines, refreshAssessmentStatus, scaledTimes, withReceiptRetry, writeAudit } from "@/lib/finance";
 import { billCurrentWeekAfterGradeResolution } from "@/lib/grade-tax";
 import { findOrCreateNinjaProfileForCharacter } from "@/lib/ninja-link";
 import { demoMode, getSession, hasPermission, requireWriteAccess } from "@/lib/session";
@@ -91,31 +91,6 @@ async function cancelTaxesAfterDeath(tx: Prisma.TransactionClient, ninjaId: stri
     cancelled += result.count;
   }
   return { cancelled, refunded };
-}
-
-export async function createNinja(formData: FormData) {
-  const session = await requireWriteAccess("ninjas:write");
-  const parsed = createNinjaSchema.safeParse(Object.fromEntries(formData));
-  if (!parsed.success) redirect(`/ninjas/new?erreur=${encodeURIComponent(parsed.error.issues[0]?.message ?? "Saisie invalide")}`);
-  let ninjaId = "";
-  try {
-    ninjaId = await prisma.$transaction(async (tx) => {
-      await lockNinjaRegistry(tx);
-      await assertNinjaNameAvailable(tx, parsed.data.firstName, parsed.data.lastName);
-      const grade = await tx.ninjaGrade.findFirst({ where: { id: parsed.data.gradeId, isActive: true, code: { not: "UNKNOWN" } } });
-      if (!grade) throw new Error("VALIDATION:Grade inconnu ou inactif");
-      const next = await nextNinjaCode(tx);
-      const ninja = await tx.ninjaProfile.create({ data: { code: next, firstName: parsed.data.firstName, lastName: parsed.data.lastName, alias: parsed.data.alias, clan: parsed.data.clan, notes: parsed.data.notes, currentGradeId: grade.id } });
-      await tx.ninjaGradeHistory.create({ data: { ninjaId: ninja.id, gradeId: grade.id, effectiveFrom: new Date(), reason: "Création du dossier", changedById: session.userId } });
-      await writeAudit(tx, { actorId: session.userId, action: "NINJA_CREATED", entityType: "NinjaProfile", entityId: ninja.id, newValues: { code: next, firstName: parsed.data.firstName, lastName: parsed.data.lastName, grade: grade.code } });
-      return ninja.id;
-    });
-  } catch (error) {
-    if (error instanceof Error && error.message.startsWith("VALIDATION:")) redirect(`/ninjas/new?erreur=${encodeURIComponent(error.message.slice("VALIDATION:".length))}`);
-    if (isUniqueViolation(error)) redirect(`/ninjas/new?erreur=${encodeURIComponent("Ce dossier existe déjà — rechargez le registre")}`);
-    throw error;
-  }
-  redirect(`/ninjas/${ninjaId}`);
 }
 
 /** Self-service: an invited agent registers their own ninja sheet, linked to their account. */
@@ -586,6 +561,30 @@ export async function openZenkaiCharacter(formData: FormData) {
     if (error instanceof Error && error.message.startsWith("VALIDATION:")) redirect(`/ninjas?erreur=${encodeURIComponent(error.message.slice("VALIDATION:".length))}`);
     throw error;
   }
+}
+
+/** Records a donation straight from a ninja's own fiche — the ninja is already
+ * known (the page you're on), so unlike the whole-catalog picker this skips
+ * any ninja search entirely. Donations only: buybacks stay on /resources. */
+export async function recordNinjaDonation(formData: FormData) {
+  const session = await requireWriteAccess("inventory:write");
+  const ninjaIdRaw = formData.get("ninjaId");
+  if (typeof ninjaIdRaw !== "string" || !ninjaIdRaw) redirect("/ninjas");
+  const ninjaId = ninjaIdRaw;
+  const back = (message: string): never => redirect(`/ninjas/${ninjaId}?erreur=${encodeURIComponent(message)}`);
+  const idempotencyKeyRaw = formData.get("idempotencyKey");
+  const idempotencyKey = typeof idempotencyKeyRaw === "string" && idempotencyKeyRaw ? idempotencyKeyRaw : back("Requête invalide, rechargez la page");
+  const parsedLines = parseTransactionLines(formData, "DONATION");
+  const lines = "error" in parsedLines ? back(parsedLines.error) : parsedLines.lines;
+  let receipt = "";
+  try {
+    receipt = await executeResourceTransaction(session, ninjaId, "DONATION", lines, idempotencyKey);
+  } catch (error) {
+    if (error instanceof Error && error.message.startsWith("VALIDATION:")) back(error.message.slice("VALIDATION:".length));
+    if (isUniqueViolation(error)) back("Ce don a déjà été enregistré (double soumission détectée)");
+    throw error;
+  }
+  redirect(`/ninjas/${ninjaId}?recu=${encodeURIComponent(receipt)}`);
 }
 
 const adjustPointsSchema = z.object({

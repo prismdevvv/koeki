@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { redirect } from "next/navigation";
-import { ArrowRight, Plus, UserPlus } from "lucide-react";
+import { ArrowRight, UserPlus } from "lucide-react";
 import { EmptyState, GradeBadge, MoneyDisplay, NinjaAvatar, PageHeader, PointDisplay, StatusBadge } from "@koeki/ui";
 import { NinjaFilters } from "@/components/ninja-filters";
 import { NinjaViews } from "@/components/ninja-views";
@@ -28,7 +28,7 @@ export default async function NinjasPage({ searchParams }: { searchParams: Promi
   const unfiled = canWrite && q ? await searchUnfiledZenkaiCharacters(q) : [];
   const table = <section className="panel ninja-table-panel">
     {data.ninjas.length ? <div className="table-scroll"><table className="ninja-table"><thead><tr><th>Ninja</th><th>Grade</th><th>Situation</th><th className="num">Dette</th><th className="num">Points</th><th>Agent</th><th>Échéance</th></tr></thead><tbody>{data.ninjas.map((ninja) => <tr key={ninja.code}><td><Link href={`/ninjas/${ninja.id}`} className="person-cell"><NinjaAvatar name={ninja.name} /><span><strong>{ninja.name}</strong><small>{ninja.code}{ninja.alias && ` · ${ninja.alias}`}</small></span></Link></td><td><GradeBadge>{ninja.grade}</GradeBadge></td><td><StatusBadge status={ninja.badge}>{ninja.statusLabel}</StatusBadge></td><td className={`num ${ninja.debt > 0n ? "negative" : "muted"}`}>{ninja.debt ? <MoneyDisplay amount={ninja.debt} /> : "Aucune"}</td><td className="num"><PointDisplay points={ninja.points} /></td><td>{ninja.agent}</td><td>{ninja.due}</td></tr>)}</tbody></table></div>
-      : <EmptyState title="Aucun ninja trouvé" description="Ajustez la recherche ou les filtres — ou créez un nouveau dossier." />}
+      : <EmptyState title="Aucun ninja trouvé" description="Ajustez la recherche ou les filtres — tapez un nom pour chercher aussi parmi les personnages Zenkai actifs sans fiche." />}
   </section>;
   const cards = <section className="ninja-card-grid" aria-label="Registre des ninjas en cartes">{data.ninjas.map((ninja) => <article className="ninja-card" key={ninja.code}>
     <header><Link href={`/ninjas/${ninja.id}`} className="person-cell"><NinjaAvatar name={ninja.name} /><span><strong>{ninja.name}</strong><small>{ninja.code}</small></span></Link><StatusBadge status={ninja.badge}>{ninja.statusLabel}</StatusBadge></header>
@@ -51,8 +51,7 @@ export default async function NinjasPage({ searchParams }: { searchParams: Promi
         { label: "En retard", value: new Intl.NumberFormat("fr-FR").format(data.stats.overdue) },
         { label: "Décédés", value: new Intl.NumberFormat("fr-FR").format(data.stats.deceased) },
         { label: "Dette totale", value: <MoneyDisplay amount={data.stats.debt} /> }
-      ]}
-      actions={canWrite ? <Link className="button button-primary" href="/ninjas/new"><Plus size={17} /> Nouveau ninja</Link> : undefined} />
+      ]} />
     {info && <p className="notice" role="status">{info}</p>}
     {error && <p className="notice error" role="alert">{error}</p>}
     <NinjaFilters grades={data.grades} />

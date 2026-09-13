@@ -3,11 +3,12 @@ import { notFound, redirect } from "next/navigation";
 import { ArrowLeft, KeyRound, Pencil } from "lucide-react";
 import { EmptyState, GradeBadge, MetricCard, MoneyDisplay, NinjaAvatar, PageHeader, PointDisplay, SectionHeader, StatusBadge } from "@koeki/ui";
 import { DetailTabs } from "@/components/detail-tabs";
+import { NinjaDonationItems } from "@/components/ninja-donation-items";
 import { SettlementItems } from "@/components/settlement-items";
 import { getNinjaDetail } from "@/lib/data";
 import { lateYearsLabel } from "@/lib/format";
 import { demoMode, hasPermission, requireSession } from "@/lib/session";
-import { adjustPoints, changeGrade, recordPayment, waiveAssessment } from "../actions";
+import { adjustPoints, changeGrade, recordNinjaDonation, recordPayment, waiveAssessment } from "../actions";
 import { prisma } from "@koeki/database";
 import { parseExemptionPolicy } from "@koeki/domain";
 
@@ -30,7 +31,12 @@ export default async function NinjaDetailPage({ params, searchParams }: { params
   const exemptionPolicy = parseExemptionPolicy(exemptionSetting?.value);
   const isActive = data.lifecycleStatus === "ACTIVE";
   const gradeNeedsUpdate = isActive && data.grade.code === "UNKNOWN";
-  const donatable = !demoMode && canPay && isActive && exemptionPolicy.weeklyTaxCoverageBps > 0 ? await prisma.resource.findMany({ where: { isActive: true }, orderBy: [{ exemptionPerUnit: "desc" }, { name: "asc" }] }) : [];
+  const donatable = !demoMode && canPay && isActive ? await prisma.resource.findMany({ where: { isActive: true }, orderBy: [{ exemptionPerUnit: "desc" }, { name: "asc" }] }) : [];
+  const donationResourceOptions = donatable.map((resource) => {
+    const points = resource.pointsPerUnit, rate = Number(resource.exemptionPerUnit);
+    const detail = [points > 0 ? `${points} pts/u` : null, rate > 0 ? `${new Intl.NumberFormat("fr-FR").format(rate)} ¥/u` : null].filter(Boolean).join(" · ");
+    return { id: resource.id, name: resource.name, donLabel: detail ? `${resource.name} — ${detail}` : resource.name, points, rate };
+  });
   const receipt = typeof query.recu === "string" ? query.recu : null;
   const error = typeof query.erreur === "string" ? query.erreur : null;
   const info = typeof query.info === "string" ? query.info : null;
@@ -56,7 +62,15 @@ export default async function NinjaDetailPage({ params, searchParams }: { params
         <SettlementItems taxCoverageBps={exemptionPolicy.weeklyTaxCoverageBps} resources={donatable.map((resource) => ({ id: resource.id, name: resource.name, label: `${resource.name}${resource.exemptionPerUnit > 0n ? ` — crédit ${new Intl.NumberFormat("fr-FR").format(Number(resource.exemptionPerUnit))} ¥/u` : ""}${resource.pointsPerUnit > 0 ? ` · ${resource.pointsPerUnit} pts/u` : ""}`, rate: Number(resource.exemptionPerUnit) }))} />
         <label>Référence (facultatif)<input type="text" name="reference" maxLength={120} placeholder="Arrangement, contexte…" /></label>
         <div className="form-actions"><button className="button button-primary" type="submit"><KeyRound size={16} /> Régler les semaines cochées</button></div>
-      </form> : <p className="notice" style={{ margin: 18 }}>{gradeNeedsUpdate ? "Renseignez d’abord le grade dans l’onglet Gestion : la semaine en cours sera alors facturée immédiatement." : <>Rien à encaisser : aucune semaine ouverte. La prochaine taxe sera générée dimanche minuit{data.exemptionBalance > 0n && exemptionPolicy.weeklyTaxCoverageBps > 0 ? ` ; le crédit pourra en couvrir jusqu’à ${(exemptionPolicy.weeklyTaxCoverageBps / 100).toLocaleString("fr-FR")} %` : ""}. Les dons et rachats hors taxes s’enregistrent depuis la page <Link href="/resources/transaction" className="text-link">Ressources</Link>.</>}</p>}
+      </form> : <p className="notice" style={{ margin: 18 }}>{gradeNeedsUpdate ? "Renseignez d’abord le grade dans l’onglet Gestion : la semaine en cours sera alors facturée immédiatement." : <>Rien à encaisser : aucune semaine ouverte. La prochaine taxe sera générée dimanche minuit{data.exemptionBalance > 0n && exemptionPolicy.weeklyTaxCoverageBps > 0 ? ` ; le crédit pourra en couvrir jusqu’à ${(exemptionPolicy.weeklyTaxCoverageBps / 100).toLocaleString("fr-FR")} %` : ""}. Un don peut toujours être enregistré ci-dessous, ou un rachat depuis la page <Link href="/resources/transaction" className="text-link">Ressources</Link>.</>}</p>}
+    </section>}
+    {canPay && isActive && donationResourceOptions.length > 0 && <section className="panel stack-panel">
+      <SectionHeader title="Faire un don" description="Enregistre un don de ressources pour ce ninja — points et crédit d’exonération calculés côté serveur." />
+      <form action={recordNinjaDonation} className="form-grid">
+        <input type="hidden" name="ninjaId" value={data.id} />
+        <input type="hidden" name="idempotencyKey" value={crypto.randomUUID()} />
+        <NinjaDonationItems resources={donationResourceOptions} taxCoverageBps={exemptionPolicy.weeklyTaxCoverageBps} />
+      </form>
     </section>}
     <div className="duo-grid">
       <section className="panel">
