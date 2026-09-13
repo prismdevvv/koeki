@@ -1,0 +1,3773 @@
+YA
+Yoru Akuma
+NIN-001013
+	Tokubetsu Jonin
+EN RETARD	107 500 Ryō	1 220 pts	—	2 ans RP
+
+FC
+Fumetsu Chikawa
+NIN-001070
+	Tokubetsu Jonin
+EN RETARD	107 500 Ryō	2 000 pts	—	2 ans RP
+
+SH
+Sonemi Hakumei
+NIN-001618
+	Tokubetsu Jonin
+EN RETARD	107 500 Ryō	0 pts	—	2 ans RP
+
+TK
+Takumi Kageyama
+NIN-001206
+	Tokubetsu Jonin
+EN RETARD	97 500 Ryō	1 020 pts	—	2 ans RP
+
+SA
+Shinku aketsu
+NIN-001366
+	Tokubetsu Jonin
+EN RETARD	89 500 Ryō	565 pts	—	2 ans RP
+
+KK
+Kuroi Kenseki
+NIN-001508
+	Tokubetsu Jonin
+EN RETARD	89 500 Ryō	360 pts	—	2 ans RP
+
+YA
+Yoru Amakari
+NIN-001421
+	Konin
+EN RETARD	86 000 Ryō	0 pts	—	2 ans RP
+
+RA
+Ryo Arashi
+NIN-000850
+	Konin
+EN RETARD	86 000 Ryō	3 000 pts	—	2 ans RP
+
+RK
+Raito Kamizuki
+NIN-001250
+	Konin
+EN RETARD	86 000 Ryō	508 pts	—	2 ans RP
+
+RK
+Reiji Kaze
+NIN-001227
+	Konin
+EN RETARD	86 000 Ryō	500 pts	—	2 ans RP
+
+KK
+Kuzan Kazenari
+NIN-001589
+	Konin
+EN RETARD	86 000 Ryō	0 pts	—	2 ans RP
+
+RK
+Ryuga Kuroki
+NIN-001565
+	Konin
+EN RETARD	86 000 Ryō	1 000 pts	—	2 ans RP
+
+DT
+Daiki Tsuchida
+NIN-001256
+	Tokubetsu Jonin
+EN RETARD	86 000 Ryō	1 031 pts	—	2 ans RP
+
+KM
+Koruko Mitetsu
+NIN-001249
+	Konin
+EN RETARD	85 000 Ryō	1 045 pts	—	2 ans RP
+
+AN
+Akira Nori
+NIN-001481
+	Konin
+EN RETARD	82 700 Ryō	285 pts	—	4 ans RP
+
+SK
+Suren Kagero
+NIN-000941
+	Tokubetsu Jonin
+DÉCÉDÉ	82 500 Ryō	1 020 pts	—	—
+
+TM
+Tsugu mori
+NIN-001361
+	Tokubetsu Jonin
+DÉCÉDÉ	82 500 Ryō	1 055 pts	—	—
+
+SM
+Sohei Makabe
+NIN-001319
+	Konin
+EN RETARD	81 200 Ryō	805 pts	—	2 ans RP
+
+IK
+Izan Kenseki
+NIN-001530
+	Konin
+EN RETARD	78 600 Ryō	620 pts	—	2 ans RP
+
+KH
+Kento Hakumei
+NIN-001417
+	Jonin
+EN RETARD	77 500 Ryō	0 pts	—	1 an RP
+
+DO
+Daikiro Okuwa
+NIN-000811
+	Tokubetsu Jonin
+EN RETARD	77 500 Ryō	2 165 pts	—	1 an RP
+
+ZR
+Zaryu Rizaki
+NIN-001033
+	Tokubetsu Jonin
+EN RETARD	77 500 Ryō	1 270 pts	—	1 an RP
+
+AR
+Aremi Roran
+NIN-001449
+	Tokubetsu Jonin
+EN RETARD	77 500 Ryō	110 pts	—	1 an RP
+
+MS
+Miwa Sajin
+NIN-001537
+	Tokubetsu Jonin
+EN RETARD	77 500 Ryō	870 pts	—	1 an RP
+
+AS
+Aoshi Seito
+NIN-000996
+	Tokubetsu Jonin
+EN RETARD	77 500 Ryō	1 000 pts	—	1 an RP
+
+TS
+Tushita Shabiri
+NIN-001043
+	Tokubetsu Jonin
+EN RETARD	77 500 Ryō	2 000 pts	—	1 an RP
+
+IS
+Izuma Shindra
+NIN-001182
+	Tokubetsu Jonin
+EN RETARD	77 500 Ryō	1 160 pts	—	1 an RP
+
+HS
+Haruki Sogen
+NIN-000827
+	Tokubetsu Jonin
+EN RETARD	77 500 Ryō	3 000 pts	—	1 an RP
+
+ST
+Shin Togarashi
+NIN-001192
+	Tokubetsu Jonin
+EN RETARD	77 500 Ryō	1 037 pts	—	1 an RP
+
+ST
+Seiran Tsukiyori
+NIN-001358
+	Tokubetsu Jonin
+EN RETARD	77 500 Ryō	1 325 pts	—	1 an RP
+
+RY
+Raiden Yukimura
+NIN-001540
+	Tokubetsu Jonin
+EN RETARD	77 500 Ryō	440 pts	—	1 an RP
+
+KS
+Kosa Sabaku
+NIN-001455
+	Tokubetsu Jonin
+EN RETARD	74 700 Ryō	2 310 pts	—	1 an RP
+
+YK
+Yakira Katashiwa
+NIN-001559
+	Chunin
+EN RETARD	72 800 Ryō	735 pts	—	3 ans RP
+
+YK
+Yuto Kakei
+NIN-001328
+	Konin
+DÉCÉDÉ	65 700 Ryō	510 pts	—	—
+
+IA
+Itsuki Amano
+NIN-001441
+	Chunin
+EN RETARD	64 500 Ryō	0 pts	—	2 ans RP
+
+SH
+Senshiro Hachiman
+NIN-001646
+	Chunin
+EN RETARD	64 500 Ryō	0 pts	—	2 ans RP
+
+RH
+Riku Hagane
+NIN-001501
+	Chunin
+EN RETARD	64 500 Ryō	2 872 pts	—	2 ans RP
+
+KH
+Kai Hanazora
+NIN-001467
+	Chunin
+EN RETARD	64 500 Ryō	1 095 pts	—	2 ans RP
+
+SI
+Shin Itsuki
+NIN-001497
+	Chunin
+EN RETARD	64 500 Ryō	0 pts	—	2 ans RP
+
+HK
+Hakuren Kemuri
+NIN-001667
+	Chunin
+EN RETARD	64 500 Ryō	535 pts	—	2 ans RP
+
+SK
+Sora Kesuke
+NIN-001593
+	Chunin
+EN RETARD	64 500 Ryō	0 pts	—	2 ans RP
+
+BK
+Bushi Kishigami
+NIN-001545
+	Chunin
+EN RETARD	64 500 Ryō	600 pts	—	2 ans RP
+
+ZM
+Zenkiro Mushin
+NIN-001608
+	Chunin
+EN RETARD	64 500 Ryō	0 pts	—	2 ans RP
+
+RO
+Ryuji Omachi
+NIN-001434
+	Chunin
+EN RETARD	64 500 Ryō	1 320 pts	—	2 ans RP
+
+HO
+harû omûra
+NIN-001136
+	Chunin
+EN RETARD	64 500 Ryō	0 pts	—	2 ans RP
+
+SR
+Sajin Rensai
+NIN-001731
+	Chunin
+EN RETARD	64 500 Ryō	0 pts	—	2 ans RP
+
+ZS
+Zen Sennen
+NIN-001724
+	Chunin
+EN RETARD	64 500 Ryō	0 pts	—	2 ans RP
+
+IS
+Izan Shura
+NIN-001663
+	Chunin
+EN RETARD	64 500 Ryō	5 pts	—	2 ans RP
+
+IC
+Izumei Chiiketsu
+NIN-001625
+	Chunin
+EN RETARD	63 200 Ryō	15 pts	—	2 ans RP
+
+AK
+Ayuna Kuroki
+NIN-001296
+	Konin
+DÉCÉDÉ	63 200 Ryō	1 070 pts	—	—
+
+SR
+Shinda Ryokai
+NIN-001519
+	Chunin
+EN RETARD	63 200 Ryō	30 pts	—	2 ans RP
+
+TA
+Tetsu Arashi
+NIN-001359
+	Konin
+EN RETARD	62 000 Ryō	1 286 pts	—	1 an RP
+
+TK
+Tomo Kazeru
+NIN-001520
+	Konin
+EN RETARD	62 000 Ryō	1 300 pts	—	1 an RP
+
+NK
+Nobu Kiyoshi
+NIN-001383
+	Konin
+EN RETARD	62 000 Ryō	1 315 pts	—	1 an RP
+
+YK
+Yuto Kurosaki
+NIN-001260
+	Konin
+EN RETARD	62 000 Ryō	530 pts	—	1 an RP
+
+KK
+Kintoki Kushiki
+NIN-001290
+	Konin
+EN RETARD	62 000 Ryō	500 pts	—	1 an RP
+
+KR
+Kael Ren
+NIN-001325
+	Konin
+EN RETARD	62 000 Ryō	2 080 pts	—	1 an RP
+
+SR
+Shin Ryomen
+NIN-001241
+	Konin
+EN RETARD	62 000 Ryō	1 014 pts	—	1 an RP
+
+SS
+Shinra Sabaku
+NIN-001536
+	Konin
+EN RETARD	62 000 Ryō	1 000 pts	—	1 an RP
+
+JS
+Junko Saki
+NIN-001381
+	Konin
+EN RETARD	62 000 Ryō	500 pts	—	1 an RP
+
+HT
+Haruto Tanaka
+NIN-001170
+	Konin
+EN RETARD	62 000 Ryō	1 744 pts	—	1 an RP
+
+DT
+Dondo Toko
+NIN-001432
+	Konin
+EN RETARD	62 000 Ryō	895 pts	—	1 an RP
+
+ST
+Shin Topo
+NIN-001601
+	Chunin
+EN RETARD	62 000 Ryō	55 pts	—	2 ans RP
+
+SY
+sakizu yamato
+NIN-001340
+	Konin
+EN RETARD	62 000 Ryō	965 pts	—	1 an RP
+
+SY
+Sora Yamai
+NIN-001419
+	Chunin
+EN RETARD	61 500 Ryō	600 pts	—	2 ans RP
+
+NS
+Nya Shirogane
+NIN-001555
+	Tokubetsu Jonin
+EN RETARD	61 480 Ryō	1 724 pts	—	1 an RP
+
+SA
+Shiro amakusa
+NIN-001334
+	Konin
+EN RETARD	60 400 Ryō	1 060 pts	—	1 an RP
+
+YK
+Yato Kenseki
+NIN-001500
+	Konin
+DÉCÉDÉ	60 400 Ryō	1 015 pts	—	—
+
+NK
+Nazuna Kazama
+NIN-001035
+	Konin
+EN RETARD	60 200 Ryō	1 068 pts	—	1 an RP
+
+MC
+meiro chiiketsu
+NIN-001615
+	Chunin
+EN RETARD	58 600 Ryō	385 pts	—	2 ans RP
+
+KK
+Kazuko Karu
+NIN-001566
+	Chunin
+EN RETARD	58 500 Ryō	0 pts	—	2 ans RP
+
+SC
+Sunao Chikatsume
+NIN-001308
+	Tokubetsu Jonin
+EN RETARD	57 500 Ryō	2 225 pts	—	3 ans RP
+
+AH
+Akito Hatsume
+NIN-001244
+	Tokubetsu Jonin
+EN RETARD	57 500 Ryō	1 130 pts	—	1 an RP
+
+NN
+Naoori Nagamoto
+NIN-001574
+	Tokubetsu Jonin
+EN RETARD	57 500 Ryō	500 pts	—	1 an RP
+
+RS
+Ryuto Shiranui
+NIN-001694
+	Chunin
+EN RETARD	57 500 Ryō	25 pts	—	2 ans RP
+
+OD
+Oma Denmon
+NIN-001575
+	Konin
+EN RETARD	57 000 Ryō	1 000 pts	—	1 an RP
+
+TF
+toya fuyukoshi
+NIN-001337
+	Chunin
+EN RETARD	55 500 Ryō	1 020 pts	—	2 ans RP
+
+KS
+Kakuno Shidako
+NIN-001718
+	Chunin
+EN RETARD	55 500 Ryō	60 pts	—	2 ans RP
+
+GI
+Ganko Ishida
+NIN-001634
+	Chunin
+EN RETARD	53 500 Ryō	935 pts	—	2 ans RP
+
+KK
+Kitsuki Kagomo
+NIN-001332
+	Konin
+EN RETARD	52 600 Ryō	1 050 pts	—	1 an RP
+
+YF
+Yusu Fuu
+NIN-000807
+	Tokubetsu Jonin
+DÉCÉDÉ	52 500 Ryō	1 000 pts	—	—
+
+KH
+Kay hoshi take
+NIN-000908
+	Tokubetsu Jonin
+DÉCÉDÉ	52 500 Ryō	2 604 pts	—	—
+
+KJ
+Kento Jeruke
+NIN-001335
+	Tokubetsu Jonin
+DÉCÉDÉ	52 500 Ryō	560 pts	—	—
+
+AK
+Aro Karakao
+NIN-001003
+	Tokubetsu Jonin
+DÉCÉDÉ	52 500 Ryō	1 552 pts	—	—
+
+YA
+Yuzo Aka
+NIN-000928
+	Tokubetsu Jonin
+EN RETARD	50 000 Ryō	1 035 pts	—	1 an RP
+
+SH
+Shenbaa Hakumei
+NIN-001499
+	Tokubetsu Jonin
+EN RETARD	50 000 Ryō	320 pts	—	1 an RP
+
+KH
+Kowé Heiki
+NIN-001395
+	Tokubetsu Jonin
+EN RETARD	50 000 Ryō	1 307 pts	—	1 an RP
+
+IH
+Inao Hoki
+NIN-001400
+	Tokubetsu Jonin
+EN RETARD	50 000 Ryō	500 pts	—	1 an RP
+
+SK
+shiso Kiyoshi
+NIN-001839
+	Tokubetsu Jonin
+EN RETARD	50 000 Ryō	1 000 pts	—	1 an RP
+
+KK
+Ketsu Kokuyami
+NIN-001285
+	Tokubetsu Jonin
+EN RETARD	50 000 Ryō	580 pts	—	1 an RP
+
+SK
+Shiryu Kowasu
+NIN-001276
+	Tokubetsu Jonin
+EN RETARD	50 000 Ryō	3 030 pts	—	1 an RP
+
+TK
+Tak Kurotetsu
+NIN-001439
+	Tokubetsu Jonin
+EN RETARD	50 000 Ryō	2 650 pts	—	1 an RP
+
+YK
+Yugi Kushiki
+NIN-001402
+	Tokubetsu Jonin
+EN RETARD	50 000 Ryō	1 320 pts	—	1 an RP
+
+KM
+Kenji Makuno
+NIN-001154
+	Tokubetsu Jonin
+EN RETARD	50 000 Ryō	1 670 pts	—	1 an RP
+
+KM
+Kazuki Mitsuzen
+NIN-001528
+	Tokubetsu Jonin
+EN RETARD	50 000 Ryō	1 350 pts	—	1 an RP
+
+YS
+Yukio Sakimodo
+NIN-000808
+	Tokubetsu Jonin
+EN RETARD	50 000 Ryō	2 000 pts	—	1 an RP
+
+KS
+Kenji Shiori
+NIN-001283
+	Tokubetsu Jonin
+EN RETARD	50 000 Ryō	1 114 pts	—	1 an RP
+
+NY
+Naoki Yamazaki
+NIN-001242
+	Tokubetsu Jonin
+EN RETARD	50 000 Ryō	9 161 pts	—	1 an RP
+
+Y.
+Yakuro .
+NIN-001813
+	Chunin
+EN RETARD	46 500 Ryō	0 pts	—	1 an RP
+
+JA
+Jayro Abarai
+NIN-001823
+	Chunin
+EN RETARD	46 500 Ryō	0 pts	—	1 an RP
+
+RA
+Rin Akashi
+NIN-001707
+	Chunin
+EN RETARD	46 500 Ryō	0 pts	—	1 an RP
+
+RA
+Raizen Aketsu
+NIN-001886
+	Chunin
+EN RETARD	46 500 Ryō	0 pts	—	1 an RP
+
+RC
+Ryuta Chiiketsu
+NIN-001887
+	Chunin
+EN RETARD	46 500 Ryō	1 000 pts	—	1 an RP
+
+SD
+Seya Derwoo
+NIN-001783
+	Chunin
+EN RETARD	46 500 Ryō	0 pts	—	1 an RP
+
+SI
+Shinra Illuk
+NIN-001748
+	Chunin
+EN RETARD	46 500 Ryō	0 pts	—	1 an RP
+
+TI
+Tanzao Ito
+NIN-001794
+	Chunin
+EN RETARD	46 500 Ryō	0 pts	—	1 an RP
+
+TK
+Tairo Kajiya
+NIN-001829
+	Chunin
+EN RETARD	46 500 Ryō	0 pts	—	1 an RP
+
+SK
+Seki Kazejin
+NIN-001820
+	Chunin
+EN RETARD	46 500 Ryō	0 pts	—	1 an RP
+
+GK
+Garoo Kemuri
+NIN-001793
+	Chunin
+EN RETARD	46 500 Ryō	0 pts	—	1 an RP
+
+RK
+Reika Kinomi
+NIN-001884
+	Chunin
+EN RETARD	46 500 Ryō	0 pts	—	1 an RP
+
+GK
+Ghano Komotsu
+NIN-001853
+	Chunin
+EN RETARD	46 500 Ryō	0 pts	—	1 an RP
+
+RK
+Raijin Kusanagi
+NIN-001802
+	Chunin
+EN RETARD	46 500 Ryō	0 pts	—	1 an RP
+
+SO
+Selma Obanai
+NIN-001855
+	Chunin
+EN RETARD	46 500 Ryō	0 pts	—	1 an RP
+
+SO
+Saito Obara
+NIN-001355
+	Chunin
+EN RETARD	46 500 Ryō	1 215 pts	—	1 an RP
+
+TO
+Taro Okuwa
+NIN-001547
+	Chunin
+EN RETARD	46 500 Ryō	0 pts	—	1 an RP
+
+SR
+Seijuro Renjiro
+NIN-001795
+	Chunin
+EN RETARD	46 500 Ryō	0 pts	—	1 an RP
+
+JR
+Jin Ringo
+NIN-000864
+	Chunin
+EN RETARD	46 500 Ryō	1 000 pts	—	1 an RP
+
+SS
+Shôra Sabaku
+NIN-001631
+	Chunin
+EN RETARD	46 500 Ryō	0 pts	—	1 an RP
+
+RS
+Renjiro Sairo
+NIN-001832
+	Chunin
+EN RETARD	46 500 Ryō	0 pts	—	1 an RP
+
+IS
+Ishinn Sajin
+NIN-001571
+	Chunin
+EN RETARD	46 500 Ryō	600 pts	—	1 an RP
+
+SS
+Shoppaï Saketsu
+NIN-001538
+	Chunin
+EN RETARD	46 500 Ryō	625 pts	—	1 an RP
+
+NS
+Nayumi Sano
+NIN-001831
+	Konin
+EN RETARD	46 500 Ryō	0 pts	—	1 an RP
+
+SS
+Shin Sato
+NIN-001883
+	Chunin
+EN RETARD	46 500 Ryō	0 pts	—	1 an RP
+
+HS
+Haru Senkyo
+NIN-001009
+	Chunin
+EN RETARD	46 500 Ryō	250 pts	—	1 an RP
+
+SR
+Shô Râ Shihôin
+NIN-001830
+	Chunin
+EN RETARD	46 500 Ryō	0 pts	—	1 an RP
+
+KS
+Kazeo Shiro
+NIN-001509
+	Chunin
+EN RETARD	46 500 Ryō	250 pts	—	1 an RP
+
+RS
+Ryu Shiru
+NIN-001822
+	Chunin
+EN RETARD	46 500 Ryō	0 pts	—	1 an RP
+
+KS
+Kido Shôta
+NIN-001814
+	Chunin
+EN RETARD	46 500 Ryō	0 pts	—	1 an RP
+
+SS
+Shin Shuiku
+NIN-001606
+	Chunin
+EN RETARD	46 500 Ryō	0 pts	—	1 an RP
+
+KS
+Kobayashi Sora
+NIN-001609
+	Chunin
+EN RETARD	46 500 Ryō	0 pts	—	1 an RP
+
+KT
+Kinchaku Topo
+NIN-001672
+	Chunin
+EN RETARD	46 500 Ryō	0 pts	—	1 an RP
+
+KT
+Kazama Tsubo
+NIN-001300
+	Chunin
+EN RETARD	46 500 Ryō	1 290 pts	—	1 an RP
+
+HV
+Hirashi Vonkai
+NIN-001854
+	Chunin
+EN RETARD	46 500 Ryō	0 pts	—	1 an RP
+
+KK
+Kuren Kazama
+NIN-001744
+	Chunin
+EN RETARD	46 390 Ryō	22 pts	—	1 an RP
+
+HA
+Haruna agaku
+NIN-001581
+	Tokubetsu Jonin
+EN RETARD	45 000 Ryō	1 140 pts	—	1 an RP
+
+PA
+Perota akuro
+NIN-001570
+	Tokubetsu Jonin
+EN RETARD	45 000 Ryō	1 900 pts	—	1 an RP
+
+SA
+Shidai Ara
+NIN-001740
+	Tokubetsu Jonin
+EN RETARD	45 000 Ryō	1 000 pts	—	1 an RP
+
+AH
+Atsuki Hoki
+NIN-001647
+	Tokubetsu Jonin
+EN RETARD	45 000 Ryō	1 000 pts	—	1 an RP
+
+SS
+Sôka Shirogane
+NIN-001630
+	Tokubetsu Jonin
+EN RETARD	45 000 Ryō	1 035 pts	—	1 an RP
+
+K
+Kyoma
+NIN-001673
+	Genin confirmé
+EN RETARD	43 000 Ryō	480 pts	—	2 ans RP
+
+SA
+Saraka Asakura
+NIN-001752
+	Genin confirmé
+EN RETARD	43 000 Ryō	0 pts	—	2 ans RP
+
+KB
+Kyoga Bakkujin
+NIN-001700
+	Genin confirmé
+EN RETARD	43 000 Ryō	0 pts	—	2 ans RP
+
+YD
+Yama Denmon
+NIN-001656
+	Genin confirmé
+EN RETARD	43 000 Ryō	80 pts	—	2 ans RP
+
+ZF
+Zerei Fujind
+NIN-001675
+	Genin confirmé
+EN RETARD	43 000 Ryō	260 pts	—	2 ans RP
+
+HK
+Hinae Kabuya
+NIN-001676
+	Genin confirmé
+EN RETARD	43 000 Ryō	250 pts	—	2 ans RP
+
+IK
+Itsubo Kakeho
+NIN-001446
+	Genin confirmé
+EN RETARD	43 000 Ryō	0 pts	—	2 ans RP
+
+KM
+Kenjaku Moro
+NIN-001661
+	Genin confirmé
+EN RETARD	43 000 Ryō	20 pts	—	2 ans RP
+
+YS
+Yua Saito
+NIN-001725
+	Genin confirmé
+EN RETARD	43 000 Ryō	0 pts	—	2 ans RP
+
+SK
+Sora Kanzaki
+NIN-001804
+	Chunin
+EN RETARD	42 500 Ryō	80 pts	—	1 an RP
+
+AI
+Amamaru Izumi
+NIN-001503
+	Genin confirmé
+EN RETARD	42 120 Ryō	26 pts	—	2 ans RP
+
+MK
+Mouten Kuzushi
+NIN-001418
+	Chunin
+EN RETARD	41 500 Ryō	500 pts	—	1 an RP
+
+RK
+Ryoma Kenzaki
+NIN-001542
+	Genin confirmé
+EN RETARD	41 200 Ryō	30 pts	—	2 ans RP
+
+RH
+Ryu Hoshi
+NIN-001522
+	Genin confirmé
+EN RETARD	41 000 Ryō	40 pts	—	2 ans RP
+
+AK
+Azami Katashiwa
+NIN-001560
+	Genin confirmé
+EN RETARD	41 000 Ryō	40 pts	—	2 ans RP
+
+RK
+Ren Kurogane
+NIN-001598
+	Genin confirmé
+EN RETARD	41 000 Ryō	430 pts	—	2 ans RP
+
+HM
+Hikio Mizao
+NIN-001468
+	Chunin
+EN RETARD	40 500 Ryō	3 275 pts	—	1 an RP
+
+DA
+Daishi Ara
+NIN-001739
+	Tokubetsu Jonin
+EN RETARD	40 000 Ryō	1 000 pts	—	1 an RP
+
+AF
+Akito Fuyoshima
+NIN-001465
+	Konin
+EN RETARD	40 000 Ryō	665 pts	—	1 an RP
+
+SF
+Saya Fuyutsuki
+NIN-001572
+	Konin
+EN RETARD	40 000 Ryō	2 308 pts	—	1 an RP
+
+SH
+Saemi Hakumei
+NIN-001612
+	Tokubetsu Jonin
+EN RETARD	40 000 Ryō	340 pts	—	1 an RP
+
+KH
+Kaede Hayato
+NIN-001151
+	Konin
+EN RETARD	40 000 Ryō	900 pts	—	1 an RP
+
+EH
+Eiji Hime
+NIN-001269
+	Konin
+EN RETARD	40 000 Ryō	5 085 pts	—	1 an RP
+
+KH
+Kagami Hoki
+NIN-001544
+	Konin
+EN RETARD	40 000 Ryō	1 400 pts	—	1 an RP
+
+MI
+Meguna Ichida
+NIN-001470
+	Konin
+EN RETARD	40 000 Ryō	1 245 pts	—	1 an RP
+
+IK
+Itoshi Kushiki
+NIN-001277
+	Konin
+EN RETARD	40 000 Ryō	1 111 pts	—	1 an RP
+
+RS
+Ryô sabashiro
+NIN-001732
+	Konin
+EN RETARD	40 000 Ryō	1 000 pts	—	1 an RP
+
+AA
+Akira Arashi
+NIN-001561
+	Genin confirmé
+EN RETARD	39 700 Ryō	70 pts	—	2 ans RP
+
+AM
+Akira Matsuoka
+NIN-001517
+	Genin confirmé
+EN RETARD	39 400 Ryō	80 pts	—	2 ans RP
+
+TM
+Toshiro Makaze
+NIN-001512
+	Chunin
+EN RETARD	38 630 Ryō	594 pts	—	1 an RP
+
+OS
+Ohara Shiru
+NIN-001824
+	Chunin
+EN RETARD	36 500 Ryō	200 pts	—	1 an RP
+
+RA
+Rizoku Amado
+NIN-001628
+	Genin confirmé
+EN RETARD	35 500 Ryō	380 pts	—	2 ans RP
+
+JT
+Jin Takeda
+NIN-001699
+	Genin confirmé
+EN RETARD	35 200 Ryō	180 pts	—	2 ans RP
+
+S
+Shion
+NIN-001641
+	Konin
+EN RETARD	35 000 Ryō	567 pts	—	1 an RP
+
+SA
+Senzai Akai
+NIN-001746
+	Konin
+EN RETARD	35 000 Ryō	1 090 pts	—	1 an RP
+
+CA
+Chiro Akazuna
+NIN-001583
+	Konin
+EN RETARD	35 000 Ryō	1 036 pts	—	1 an RP
+
+SK
+Seishiro Kusanagi
+NIN-001808
+	Konin
+EN RETARD	35 000 Ryō	500 pts	—	1 an RP
+
+SS
+Sippi Saru
+NIN-001825
+	Konin
+EN RETARD	35 000 Ryō	1 000 pts	—	1 an RP
+
+SZ
+Saku Zetsubo
+NIN-001603
+	Konin
+EN RETARD	35 000 Ryō	505 pts	—	1 an RP
+
+RA
+Ren Akashi
+NIN-001755
+	Genin confirmé
+EN RETARD	31 000 Ryō	0 pts	—	1 an RP
+
+TA
+Taito Arakawa
+NIN-001877
+	Genin confirmé
+EN RETARD	31 000 Ryō	0 pts	—	1 an RP
+
+HA
+Hina Asakura
+NIN-001749
+	Genin confirmé
+EN RETARD	31 000 Ryō	30 pts	—	1 an RP
+
+HA
+Hana Asakura
+NIN-001751
+	Genin confirmé
+EN RETARD	31 000 Ryō	0 pts	—	1 an RP
+
+ND
+Nezumi Doku
+NIN-001861
+	Genin confirmé
+EN RETARD	31 000 Ryō	0 pts	—	1 an RP
+
+ZI
+Zao Ito
+NIN-001807
+	Genin confirmé
+EN RETARD	31 000 Ryō	0 pts	—	1 an RP
+
+IJ
+Ippo Jin
+NIN-001767
+	Genin confirmé
+EN RETARD	31 000 Ryō	0 pts	—	1 an RP
+
+KK
+Kazuha Kaderha
+NIN-001790
+	Genin confirmé
+EN RETARD	31 000 Ryō	0 pts	—	1 an RP
+
+AK
+Aizen Kagame
+NIN-001865
+	Genin confirmé
+EN RETARD	31 000 Ryō	0 pts	—	1 an RP
+
+SK
+Shozen Kagame
+NIN-001868
+	Genin confirmé
+EN RETARD	31 000 Ryō	0 pts	—	1 an RP
+
+KK
+Kazen Kana
+NIN-001776
+	Genin confirmé
+EN RETARD	31 000 Ryō	0 pts	—	1 an RP
+
+RK
+Ren Kazehara
+NIN-001867
+	Genin confirmé
+EN RETARD	31 000 Ryō	0 pts	—	1 an RP
+
+EK
+Ego Kenseki
+NIN-001874
+	Genin confirmé
+EN RETARD	31 000 Ryō	0 pts	—	1 an RP
+
+AK
+Akane Kiyoshi
+NIN-001801
+	Genin confirmé
+EN RETARD	31 000 Ryō	0 pts	—	1 an RP
+
+SK
+Shiden Kiyoshi
+NIN-001810
+	Genin confirmé
+EN RETARD	31 000 Ryō	0 pts	—	1 an RP
+
+HK
+Hato Kuroi
+NIN-001882
+	Genin confirmé
+EN RETARD	31 000 Ryō	0 pts	—	1 an RP
+
+SM
+Syn Mikazuchi
+NIN-001858
+	Genin confirmé
+EN RETARD	31 000 Ryō	0 pts	—	1 an RP
+
+NM
+Nizen Mukonn
+NIN-001772
+	Genin confirmé
+EN RETARD	31 000 Ryō	0 pts	—	1 an RP
+
+AM
+Akira Muzenchi
+NIN-001660
+	Genin confirmé
+EN RETARD	31 000 Ryō	125 pts	—	1 an RP
+
+DN
+Doku Nezumi
+NIN-001876
+	Genin confirmé
+EN RETARD	31 000 Ryō	0 pts	—	1 an RP
+
+SO
+Saena Obanai
+NIN-001769
+	Genin confirmé
+EN RETARD	31 000 Ryō	0 pts	—	1 an RP
+
+KR
+Kamiya Rei
+NIN-001806
+	Genin confirmé
+EN RETARD	31 000 Ryō	0 pts	—	1 an RP
+
+RS
+Ryuk Sato
+NIN-001781
+	Genin confirmé
+EN RETARD	31 000 Ryō	0 pts	—	1 an RP
+
+TS
+Takumi Sunei
+NIN-001785
+	Genin confirmé
+EN RETARD	31 000 Ryō	0 pts	—	1 an RP
+
+KT
+Kizu Tenshi
+NIN-001623
+	Genin confirmé
+EN RETARD	31 000 Ryō	395 pts	—	1 an RP
+
+AU
+Akijiu Ujiro
+NIN-001791
+	Genin confirmé
+EN RETARD	31 000 Ryō	0 pts	—	1 an RP
+
+KY
+Ken Yake
+NIN-001766
+	Genin confirmé
+EN RETARD	31 000 Ryō	0 pts	—	1 an RP
+
+YY
+Yuna Yamai
+NIN-001789
+	Genin confirmé
+EN RETARD	31 000 Ryō	0 pts	—	1 an RP
+
+SZ
+Saka Zetsubo
+NIN-001616
+	Genin confirmé
+EN RETARD	31 000 Ryō	0 pts	—	1 an RP
+
+KA
+Kaiji Akuro
+NIN-001745
+	Genin confirmé
+EN RETARD	30 890 Ryō	22 pts	—	1 an RP
+
+R
+Rayzo
+NIN-001639
+	Chunin
+EN RETARD	30 000 Ryō	1 005 pts	—	1 an RP
+
+NA
+Natsuki Akari
+NIN-001504
+	Chunin
+EN RETARD	30 000 Ryō	2 075 pts	—	1 an RP
+
+KA
+Kima Amiru
+NIN-001852
+	Chunin
+EN RETARD	30 000 Ryō	500 pts	—	1 an RP
+
+RA
+rei arashi
+NIN-001658
+	Chunin
+EN RETARD	30 000 Ryō	0 pts	—	1 an RP
+
+UA
+Uoo Azashin
+NIN-001728
+	Chunin
+EN RETARD	30 000 Ryō	1 720 pts	—	1 an RP
+
+ED
+Eiji Denmon
+NIN-001721
+	Chunin
+EN RETARD	30 000 Ryō	4 505 pts	—	1 an RP
+
+ZG
+Zin Gah
+NIN-001691
+	Tokubetsu Jonin
+EN RETARD	30 000 Ryō	500 pts	—	1 an RP
+
+MG
+Muffetaro Genpachi
+NIN-001856
+	Chunin
+EN RETARD	30 000 Ryō	0 pts	—	1 an RP
+
+AK
+Aizen Kagetsu
+NIN-001563
+	Chunin
+EN RETARD	30 000 Ryō	890 pts	—	1 an RP
+
+KK
+Kyio Kamgemori
+NIN-001750
+	Chunin
+EN RETARD	30 000 Ryō	1 150 pts	—	1 an RP
+
+HK
+HOBOUTO KATOKU
+NIN-001738
+	Chunin
+EN RETARD	30 000 Ryō	36 pts	—	1 an RP
+
+AK
+Arashi Kaze
+NIN-001736 · X
+	Chunin
+EN RETARD	30 000 Ryō	500 pts	—	1 an RP
+
+JK
+Jin Kido
+NIN-001624
+	Chunin
+EN RETARD	30 000 Ryō	2 630 pts	—	1 an RP
+
+HK
+Hen Kurogane
+NIN-001326
+	Chunin
+EN RETARD	30 000 Ryō	1 400 pts	—	1 an RP
+
+KK
+Kai Kyo
+NIN-001821
+	Chunin
+EN RETARD	30 000 Ryō	500 pts	—	1 an RP
+
+JK
+Juzo Kyokaze
+NIN-001828
+	Chunin
+EN RETARD	30 000 Ryō	500 pts	—	1 an RP
+
+GK
+Goto Kyokaze
+NIN-001843
+	Chunin
+EN RETARD	30 000 Ryō	500 pts	—	1 an RP
+
+NK
+Nishida Kyokaze
+NIN-001844
+	Chunin
+EN RETARD	30 000 Ryō	500 pts	—	1 an RP
+
+YM
+Yorito Mikazuchi
+NIN-001805
+	Chunin
+EN RETARD	30 000 Ryō	0 pts	—	1 an RP
+
+KM
+Kaisei Mikazuki
+NIN-001815
+	Chunin
+EN RETARD	30 000 Ryō	500 pts	—	1 an RP
+
+PM
+punpun Moki
+NIN-001594
+	Chunin
+EN RETARD	30 000 Ryō	500 pts	—	1 an RP
+
+SR
+Seijiru Renjiru
+NIN-001665
+	Chunin
+EN RETARD	30 000 Ryō	1 778 pts	—	1 an RP
+
+SR
+Seijuru Renjiru
+NIN-001657
+	Chunin
+EN RETARD	30 000 Ryō	7 760 pts	—	1 an RP
+
+KR
+Kazen Roran
+NIN-001568
+	Tokubetsu Jonin
+EN RETARD	30 000 Ryō	500 pts	—	1 an RP
+
+IS
+Itsuki Sato
+NIN-001689
+	Chunin
+EN RETARD	30 000 Ryō	1 012 pts	—	1 an RP
+
+ZS
+Zhang Shan
+NIN-001711
+	Chunin
+EN RETARD	30 000 Ryō	3 860 pts	—	1 an RP
+
+YS
+Yamada Shinjo
+NIN-001379
+	Chunin
+EN RETARD	30 000 Ryō	1 135 pts	—	1 an RP
+
+DS
+Dokai Sori
+NIN-001645
+	Chunin
+EN RETARD	30 000 Ryō	200 pts	—	1 an RP
+
+AT
+Akachi Taiju
+NIN-001708
+	Chunin
+EN RETARD	30 000 Ryō	1 295 pts	—	1 an RP
+
+ZA
+Zipo Asakura
+NIN-001990
+	Tokubetsu Jonin
+ÉCHÉANCE PROCHE	25 000 Ryō	0 pts	—	1 jours
+
+SA
+Sora Azashin
+NIN-000939
+	Tokubetsu Jonin
+ÉCHÉANCE PROCHE	25 000 Ryō	1 578 pts	—	1 jours
+
+TH
+Tenro Hakumei
+NIN-001514
+	Tokubetsu Jonin
+ÉCHÉANCE PROCHE	25 000 Ryō	500 pts	—	1 jours
+
+TH
+Tebayo Hoshiken
+NIN-001007
+	Tokubetsu Jonin
+ÉCHÉANCE PROCHE	25 000 Ryō	2 641 pts	—	1 jours
+
+RK
+Renji Kaseiro
+NIN-000805
+	Tokubetsu Jonin
+ÉCHÉANCE PROCHE	25 000 Ryō	1 000 pts	—	1 jours
+
+TK
+Tadeus Kichika
+NIN-001420
+	Tokubetsu Jonin
+ÉCHÉANCE PROCHE	25 000 Ryō	1 000 pts	—	1 jours
+
+SK
+shuji kosajin
+NIN-001651
+	Tokubetsu Jonin
+ÉCHÉANCE PROCHE	25 000 Ryō	1 000 pts	—	1 jours
+
+YK
+Yato Kuroi
+NIN-001284
+	Tokubetsu Jonin
+ÉCHÉANCE PROCHE	25 000 Ryō	3 240 pts	—	1 jours
+
+DM
+Daichi Miwaka
+NIN-001222
+	Tokubetsu Jonin
+ÉCHÉANCE PROCHE	25 000 Ryō	844 pts	—	1 jours
+
+SN
+Shira Nekoma
+NIN-001261
+	Tokubetsu Jonin
+ÉCHÉANCE PROCHE	25 000 Ryō	1 000 pts	—	1 jours
+
+DN
+Doma Nua
+NIN-001443
+	Tokubetsu Jonin
+ÉCHÉANCE PROCHE	25 000 Ryō	2 740 pts	—	1 jours
+
+MS
+Mao Sato
+NIN-001270
+	Tokubetsu Jonin
+ÉCHÉANCE PROCHE	25 000 Ryō	3 220 pts	—	1 jours
+
+BY
+Baku Yamai
+NIN-001696
+	Tokubetsu Jonin
+ÉCHÉANCE PROCHE	25 000 Ryō	1 060 pts	—	1 jours
+
+EZ
+Eko Zudan
+NIN-001350
+	Tokubetsu Jonin
+ÉCHÉANCE PROCHE	25 000 Ryō	3 975 pts	—	1 jours
+
+M.
+Megumi .
+NIN-001905
+	Genin confirmé
+EN RETARD	20 000 Ryō	0 pts	—	1 an RP
+
+K.
+Kazu .
+NIN-001742
+	Tokubetsu Jonin
+ÉCHÉANCE PROCHE	20 000 Ryō	1 000 pts	—	1 jours
+
+K.
+Kodo .
+NIN-001895
+	Genin confirmé
+EN RETARD	20 000 Ryō	0 pts	—	1 an RP
+
+J.
+Jiro .
+NIN-001764
+	Genin confirmé
+EN RETARD	20 000 Ryō	0 pts	—	1 an RP
+
+RA
+Ren Aizawa
+NIN-001906
+	Genin confirmé
+EN RETARD	20 000 Ryō	0 pts	—	1 an RP
+
+YA
+YMIR AKECHI
+NIN-001743
+	Genin confirmé
+EN RETARD	20 000 Ryō	0 pts	—	1 an RP
+
+SA
+Seiji Amatsuki
+NIN-001953
+	Genin confirmé
+EN RETARD	20 000 Ryō	0 pts	—	1 an RP
+
+TA
+Tenghu Aotsuki
+NIN-001747
+	Konin
+ÉCHÉANCE PROCHE	20 000 Ryō	1 437 pts	—	1 jours
+
+BA
+Brise Ardente
+NIN-001848
+	Genin confirmé
+EN RETARD	20 000 Ryō	0 pts	—	1 an RP
+
+SA
+Senda Ashashine
+NIN-001622
+	Genin confirmé
+EN RETARD	20 000 Ryō	500 pts	—	1 an RP
+
+KB
+Kahal Bakkujin
+NIN-001666
+	Genin confirmé
+EN RETARD	20 000 Ryō	1 220 pts	—	1 an RP
+
+NC
+Naoketsu Chiiketsu
+NIN-001780
+	Genin confirmé
+EN RETARD	20 000 Ryō	30 pts	—	1 an RP
+
+KC
+Kanna Chikatsume
+NIN-001908
+	Genin confirmé
+EN RETARD	20 000 Ryō	0 pts	—	1 an RP
+
+SC
+Suna. Chikatsume
+NIN-001889
+	Genin confirmé
+EN RETARD	20 000 Ryō	0 pts	—	1 an RP
+
+KC
+Komada Chojuro
+NIN-001955
+	Genin confirmé
+EN RETARD	20 000 Ryō	0 pts	—	1 an RP
+
+BÉ
+Brise écarlate
+NIN-001897
+	Genin confirmé
+EN RETARD	20 000 Ryō	0 pts	—	1 an RP
+
+SH
+Saika Hanazora
+NIN-001640
+	Konin
+ÉCHÉANCE PROCHE	20 000 Ryō	1 470 pts	—	1 jours
+
+KH
+Kokurai Hanazora
+NIN-001643
+	Tokubetsu Jonin
+ÉCHÉANCE PROCHE	20 000 Ryō	1 180 pts	—	1 jours
+
+IH
+Itsuki Hiroshi
+NIN-001913
+	Genin confirmé
+EN RETARD	20 000 Ryō	0 pts	—	1 an RP
+
+MH
+Meisa Hisume
+NIN-001971
+	Konin
+ÉCHÉANCE PROCHE	20 000 Ryō	0 pts	—	1 jours
+
+SI
+Senjuro Isoshi
+NIN-001686
+	Genin confirmé
+EN RETARD	20 000 Ryō	590 pts	—	1 an RP
+
+KI
+Kuma Itsuki
+NIN-001914
+	Genin confirmé
+EN RETARD	20 000 Ryō	0 pts	—	1 an RP
+
+KK
+kaito kaba
+NIN-001306
+	Konin
+ÉCHÉANCE PROCHE	20 000 Ryō	510 pts	—	1 jours
+
+RK
+Renjiro Kagemori
+NIN-001958
+	Genin confirmé
+EN RETARD	20 000 Ryō	0 pts	—	1 an RP
+
+RK
+Razuro Kamuri
+NIN-001502
+	Konin
+ÉCHÉANCE PROCHE	20 000 Ryō	1 407 pts	—	1 jours
+
+KK
+Kuru Katsuma
+NIN-001959
+	Genin confirmé
+EN RETARD	20 000 Ryō	0 pts	—	1 an RP
+
+RK
+Ryota Katsuro
+NIN-001894
+	Genin confirmé
+EN RETARD	20 000 Ryō	0 pts	—	1 an RP
+
+YK
+Yuso Kenseki
+NIN-001915
+	Genin confirmé
+EN RETARD	20 000 Ryō	0 pts	—	1 an RP
+
+KK
+Kou Kii
+NIN-001798
+	Konin
+ÉCHÉANCE PROCHE	20 000 Ryō	0 pts	—	1 jours
+
+GK
+Gaiji Kinshiro
+NIN-001422
+	Genin confirmé
+EN RETARD	20 000 Ryō	500 pts	—	1 an RP
+
+RK
+Richiro Kogane
+NIN-001759
+	Genin confirmé
+EN RETARD	20 000 Ryō	810 pts	—	1 an RP
+
+KK
+Kororo kornami
+NIN-001678
+	Genin confirmé
+EN RETARD	20 000 Ryō	500 pts	—	1 an RP
+
+RK
+Rava Kototsu
+NIN-001916
+	Genin confirmé
+EN RETARD	20 000 Ryō	0 pts	—	1 an RP
+
+RK
+Reva Kototsu
+NIN-001756
+	Genin confirmé
+EN RETARD	20 000 Ryō	200 pts	—	1 an RP
+
+KK
+Kinji Kurogane
+NIN-001546
+	Konin
+ÉCHÉANCE PROCHE	20 000 Ryō	1 000 pts	—	1 jours
+
+AK
+Akiro Kusakabe
+NIN-001987
+	Tokubetsu Jonin
+ÉCHÉANCE PROCHE	20 000 Ryō	1 000 pts	—	1 jours
+
+ZK
+Zoran Kusakabe
+NIN-001988
+	Tokubetsu Jonin
+ÉCHÉANCE PROCHE	20 000 Ryō	0 pts	—	1 jours
+
+KK
+Kaido Kusanagi
+NIN-001918
+	Genin confirmé
+EN RETARD	20 000 Ryō	0 pts	—	1 an RP
+
+SM
+Sanka Malo
+NIN-001709
+	Genin confirmé
+EN RETARD	20 000 Ryō	210 pts	—	1 an RP
+
+DM
+Daisuke Matsuda
+NIN-001869
+	Genin confirmé
+EN RETARD	20 000 Ryō	0 pts	—	1 an RP
+
+IM
+Izuna Mitsuzen
+NIN-001834
+	Genin confirmé
+EN RETARD	20 000 Ryō	1 000 pts	—	1 an RP
+
+SM
+Shiro Mitsuzen
+NIN-001765
+	Genin confirmé
+EN RETARD	20 000 Ryō	510 pts	—	1 an RP
+
+NM
+Nagare Mitsuzen
+NIN-001812
+	Genin confirmé
+EN RETARD	20 000 Ryō	500 pts	—	1 an RP
+
+TM
+Takeshi Mizuno
+NIN-001614
+	Konin
+ÉCHÉANCE PROCHE	20 000 Ryō	465 pts	—	1 jours
+
+KM
+Kurogane Mugen
+NIN-001919
+	Genin confirmé
+EN RETARD	20 000 Ryō	0 pts	—	1 an RP
+
+MO
+Mikey Ohoha
+NIN-001771
+	Genin confirmé
+EN RETARD	20 000 Ryō	0 pts	—	1 an RP
+
+SO
+Shaku Ohoha
+NIN-001921
+	Genin confirmé
+EN RETARD	20 000 Ryō	0 pts	—	1 an RP
+
+UR
+Uno Raygame
+NIN-001922
+	Genin confirmé
+EN RETARD	20 000 Ryō	0 pts	—	1 an RP
+
+BR
+Byaku Ren
+NIN-001845 · Densetssu
+	Genin confirmé
+EN RETARD	20 000 Ryō	25 pts	—	1 an RP
+
+BR
+Bokutsu Retsu
+NIN-001923
+	Genin confirmé
+EN RETARD	20 000 Ryō	0 pts	—	1 an RP
+
+SR
+Shinji Retsu
+NIN-001925
+	Genin confirmé
+EN RETARD	20 000 Ryō	0 pts	—	1 an RP
+
+SR
+Satoshi Retsu
+NIN-001924
+	Genin confirmé
+EN RETARD	20 000 Ryō	0 pts	—	1 an RP
+
+SR
+Shirokage Retsuga
+NIN-001864
+	Genin confirmé
+EN RETARD	20 000 Ryō	780 pts	—	1 an RP
+
+TR
+Tetsuya Ryuji
+NIN-001927
+	Genin confirmé
+EN RETARD	20 000 Ryō	25 pts	—	1 an RP
+
+YS
+Yokodori Sakai
+NIN-001929
+	Genin confirmé
+EN RETARD	20 000 Ryō	0 pts	—	1 an RP
+
+KS
+kaien saketsu
+NIN-001595
+	Tokubetsu Jonin
+ÉCHÉANCE PROCHE	20 000 Ryō	1 025 pts	—	1 jours
+
+TS
+Takuro Saketsu
+NIN-001531
+	Konin
+ÉCHÉANCE PROCHE	20 000 Ryō	540 pts	—	1 jours
+
+SS
+Shinishi Sando
+NIN-001717
+	Tokubetsu Jonin
+ÉCHÉANCE PROCHE	20 000 Ryō	1 020 pts	—	1 jours
+
+SS
+Sosuke Sano
+NIN-001669
+	Tokubetsu Jonin
+ÉCHÉANCE PROCHE	20 000 Ryō	500 pts	—	1 jours
+
+YS
+Yusuke Sano
+NIN-001706
+	Tokubetsu Jonin
+ÉCHÉANCE PROCHE	20 000 Ryō	500 pts	—	1 jours
+
+HS
+Haru sazan
+NIN-001638
+	Konin
+ÉCHÉANCE PROCHE	20 000 Ryō	766 pts	—	1 jours
+
+AS
+Amira Seiki
+NIN-001683
+	Genin confirmé
+EN RETARD	20 000 Ryō	705 pts	—	1 an RP
+
+TS
+Tong Shan
+NIN-001680
+	Genin confirmé
+EN RETARD	20 000 Ryō	500 pts	—	1 an RP
+
+RS
+Rouslane Shu
+NIN-001931
+	Genin confirmé
+EN RETARD	20 000 Ryō	0 pts	—	1 an RP
+
+TS
+Takumi Sunai
+NIN-001841
+	Genin confirmé
+EN RETARD	20 000 Ryō	0 pts	—	1 an RP
+
+TT
+Tatsuo Tayra
+NIN-001758
+	Genin confirmé
+EN RETARD	20 000 Ryō	400 pts	—	1 an RP
+
+KT
+Kaïba Tobari
+NIN-001904
+	Genin confirmé
+EN RETARD	20 000 Ryō	40 pts	—	1 an RP
+
+ST
+Seiya Tobari
+NIN-001900
+	Genin confirmé
+EN RETARD	20 000 Ryō	20 pts	—	1 an RP
+
+ET
+Eden Tobari
+NIN-001902
+	Genin confirmé
+EN RETARD	20 000 Ryō	30 pts	—	1 an RP
+
+RT
+Rina Togarashi
+NIN-001934
+	Genin confirmé
+EN RETARD	20 000 Ryō	0 pts	—	1 an RP
+
+DT
+DOKU TOGARASHI
+NIN-001951
+	Genin confirmé
+EN RETARD	20 000 Ryō	0 pts	—	1 an RP
+
+AT
+Akio Tsukasa
+NIN-001705
+	Genin confirmé
+EN RETARD	20 000 Ryō	855 pts	—	1 an RP
+
+TT
+Toji Tsukihana
+NIN-001935
+	Genin confirmé
+EN RETARD	20 000 Ryō	0 pts	—	1 an RP
+
+AT
+Arashi Tsukishima
+NIN-001901
+	Genin confirmé
+EN RETARD	20 000 Ryō	0 pts	—	1 an RP
+
+MU
+Mae Ushiro
+NIN-001372
+	Konin
+ÉCHÉANCE PROCHE	20 000 Ryō	1 076 pts	—	1 jours
+
+RY
+Reito Yamai
+NIN-001779
+	Genin confirmé
+EN RETARD	20 000 Ryō	0 pts	—	1 an RP
+
+SY
+Sann Yotei
+NIN-001938
+	Genin confirmé
+EN RETARD	20 000 Ryō	0 pts	—	1 an RP
+
+KY
+Kino Yutsu
+NIN-001939
+	Genin confirmé
+EN RETARD	20 000 Ryō	0 pts	—	1 an RP
+
+YY
+Yorai Yuzuki
+NIN-001866
+	Genin confirmé
+EN RETARD	20 000 Ryō	0 pts	—	1 an RP
+
+YZ
+Yuno Zenon
+NIN-001949
+	Genin confirmé
+EN RETARD	20 000 Ryō	0 pts	—	1 an RP
+
+SZ
+Saki Zetsubo
+NIN-001602
+	Konin
+ÉCHÉANCE PROCHE	20 000 Ryō	1 050 pts	—	1 jours
+
+H
+Hao
+NIN-001674
+	Chunin
+ÉCHÉANCE PROCHE	15 000 Ryō	660 pts	—	1 jours
+
+SA
+Shura Akuro
+NIN-001803
+	Chunin
+ÉCHÉANCE PROCHE	15 000 Ryō	0 pts	—	1 jours
+
+SA
+Soma Ameyury
+NIN-001946
+	Chunin
+ÉCHÉANCE PROCHE	15 000 Ryō	325 pts	—	1 jours
+
+DA
+daiki arachi
+NIN-002001
+	Chunin
+ÉCHÉANCE PROCHE	15 000 Ryō	0 pts	—	1 jours
+
+KA
+Kaien Arao
+NIN-001757
+	Chunin
+ÉCHÉANCE PROCHE	15 000 Ryō	400 pts	—	1 jours
+
+KA
+Kagetsu Arashi
+NIN-001720
+	Chunin
+ÉCHÉANCE PROCHE	15 000 Ryō	1 200 pts	—	1 jours
+
+FD
+Fugo Daizawat
+NIN-001387
+	Chunin
+ÉCHÉANCE PROCHE	15 000 Ryō	1 440 pts	—	1 jours
+
+HH
+HAO HANAZORA
+NIN-002009
+	Konin
+ÉCHÉANCE PROCHE	15 000 Ryō	0 pts	—	1 jours
+
+TH
+Tetsuya hoshino
+NIN-001722
+	Konin
+ÉCHÉANCE PROCHE	15 000 Ryō	992 pts	—	1 jours
+
+SK
+Souma Kagetsuchi
+NIN-001782
+	Chunin
+ÉCHÉANCE PROCHE	15 000 Ryō	0 pts	—	1 jours
+
+BK
+Bakuro Kana
+NIN-001768
+	Chunin
+ÉCHÉANCE PROCHE	15 000 Ryō	0 pts	—	1 jours
+
+IK
+Isao Kanemori
+NIN-001760
+	Konin
+ÉCHÉANCE PROCHE	15 000 Ryō	536 pts	—	1 jours
+
+SK
+Sukeka Kazai
+NIN-001878
+	Chunin
+ÉCHÉANCE PROCHE	15 000 Ryō	0 pts	—	1 jours
+
+SK
+Sento Kemuri
+NIN-001654
+	Chunin
+ÉCHÉANCE PROCHE	15 000 Ryō	827 pts	—	1 jours
+
+SK
+SHANAO KOSAJIN
+NIN-001983
+	Chunin
+ÉCHÉANCE PROCHE	15 000 Ryō	0 pts	—	1 jours
+
+AK
+Aiko Kusakabe
+NIN-001966
+	Chunin
+ÉCHÉANCE PROCHE	15 000 Ryō	1 290 pts	—	1 jours
+
+SN
+Shuuko Nakae
+NIN-001726
+	Konin
+ÉCHÉANCE PROCHE	15 000 Ryō	1 000 pts	—	1 jours
+
+IN
+Isoma Natori
+NIN-001920
+	Chunin
+ÉCHÉANCE PROCHE	15 000 Ryō	0 pts	—	1 jours
+
+SO
+Shinra Omih
+NIN-001701
+	Konin
+ÉCHÉANCE PROCHE	15 000 Ryō	250 000 pts	—	1 jours
+
+ER
+Eiko Raiji
+NIN-001979
+	Chunin
+ÉCHÉANCE PROCHE	15 000 Ryō	0 pts	—	1 jours
+
+SS
+Shin Sabara
+NIN-001648
+	Konin
+ÉCHÉANCE PROCHE	15 000 Ryō	1 910 pts	—	1 jours
+
+IS
+Izumi Saguri
+NIN-001928
+	Chunin
+ÉCHÉANCE PROCHE	15 000 Ryō	380 pts	—	1 jours
+
+HS
+Hizawa Sajin
+NIN-001788
+	Konin
+ÉCHÉANCE PROCHE	15 000 Ryō	500 pts	—	1 jours
+
+RS
+Reizo Saketsu
+NIN-001851
+	Konin
+ÉCHÉANCE PROCHE	15 000 Ryō	500 pts	—	1 jours
+
+SS
+Sayuzo Saketsu
+NIN-001826
+	Konin
+ÉCHÉANCE PROCHE	15 000 Ryō	500 pts	—	1 jours
+
+NS
+Nosuke Sano
+NIN-001796
+	Chunin
+ÉCHÉANCE PROCHE	15 000 Ryō	500 pts	—	1 jours
+
+JS
+Jumpei Satoshi
+NIN-001872
+	Chunin
+ÉCHÉANCE PROCHE	15 000 Ryō	0 pts	—	1 jours
+
+RS
+Reiga Sukehiro
+NIN-001770
+	Konin
+ÉCHÉANCE PROCHE	15 000 Ryō	500 pts	—	1 jours
+
+SS
+Shinji Sukehiro
+NIN-001762
+	Konin
+ÉCHÉANCE PROCHE	15 000 Ryō	500 pts	—	1 jours
+
+EZ
+Enko Zaray
+NIN-001478
+	Tokubetsu Jonin
+ÉCHÉANCE PROCHE	15 000 Ryō	3 180 pts	—	1 jours
+
+AZ
+Akiro Zenon
+NIN-001940
+	Chunin
+ÉCHÉANCE PROCHE	15 000 Ryō	0 pts	—	1 jours
+
+AA
+Akio Akihara
+NIN-001907
+	Genin confirmé
+ÉCHÉANCE PROCHE	10 000 Ryō	0 pts	—	1 jours
+
+RA
+Raizen Amateru
+NIN-001893
+	Genin confirmé
+ÉCHÉANCE PROCHE	10 000 Ryō	0 pts	—	1 jours
+
+KA
+Kaneki Asta
+NIN-001879
+	Genin confirmé
+ÉCHÉANCE PROCHE	10 000 Ryō	10 pts	—	1 jours
+
+SD
+Shizuka Dansetsu
+NIN-001880
+	Genin confirmé
+ÉCHÉANCE PROCHE	10 000 Ryō	0 pts	—	1 jours
+
+RG
+Ren Gah
+NIN-001956
+	Genin confirmé
+ÉCHÉANCE PROCHE	10 000 Ryō	0 pts	—	1 jours
+
+SH
+Seijuro Hakumei
+NIN-001937
+	Genin confirmé
+ÉCHÉANCE PROCHE	10 000 Ryō	0 pts	—	1 jours
+
+NK
+Nami Kagachi
+NIN-001968
+	Genin confirmé
+ÉCHÉANCE PROCHE	10 000 Ryō	1 000 pts	—	1 jours
+
+NK
+Nanami Kagachi
+NIN-001969
+	Genin confirmé
+ÉCHÉANCE PROCHE	10 000 Ryō	0 pts	—	1 jours
+
+SK
+Shikki Katsuma
+NIN-001945
+	Genin confirmé
+ÉCHÉANCE PROCHE	10 000 Ryō	5 pts	—	1 jours
+
+KK
+Kizai Kurogane
+NIN-001917
+	Genin confirmé
+ÉCHÉANCE PROCHE	10 000 Ryō	0 pts	—	1 jours
+
+KK
+Kai Kuryo
+NIN-001985
+	Genin confirmé
+ÉCHÉANCE PROCHE	10 000 Ryō	0 pts	—	1 jours
+
+IK
+Itsuki Kusakabe
+NIN-001809
+	Konin
+ÉCHÉANCE PROCHE	10 000 Ryō	570 pts	—	1 jours
+
+KK
+Kaya Kusanagi
+NIN-001978
+	Genin confirmé
+ÉCHÉANCE PROCHE	10 000 Ryō	50 pts	—	1 jours
+
+JM
+Jinka Manoru
+NIN-002007
+	Genin confirmé
+ÉCHÉANCE PROCHE	10 000 Ryō	0 pts	—	1 jours
+
+ZH
+Zurapha H. Nishi
+NIN-001970
+	Genin confirmé
+ÉCHÉANCE PROCHE	10 000 Ryō	0 pts	—	1 jours
+
+RN
+Rozan Nishi
+NIN-001961
+	Genin confirmé
+ÉCHÉANCE PROCHE	10 000 Ryō	0 pts	—	1 jours
+
+YN
+Yami Nolosey
+NIN-001962
+	Genin confirmé
+ÉCHÉANCE PROCHE	10 000 Ryō	20 pts	—	1 jours
+
+RP
+Rei Pian
+NIN-001786
+	Genin confirmé
+ÉCHÉANCE PROCHE	10 000 Ryō	0 pts	—	1 jours
+
+KR
+Kayn Raku
+NIN-001984
+	Genin confirmé
+ÉCHÉANCE PROCHE	10 000 Ryō	800 pts	—	1 jours
+
+RS
+renga shihori
+NIN-002005
+	Genin confirmé
+ÉCHÉANCE PROCHE	10 000 Ryō	0 pts	—	1 jours
+
+MS
+Makoto Shinken
+NIN-001974
+	Genin confirmé
+ÉCHÉANCE PROCHE	10 000 Ryō	545 pts	—	1 jours
+
+MS
+MEIYO SHINKEN
+NIN-002008
+	Genin confirmé
+ÉCHÉANCE PROCHE	10 000 Ryō	0 pts	—	1 jours
+
+KS
+Kuroya Son
+NIN-001980
+	Genin confirmé
+ÉCHÉANCE PROCHE	10 000 Ryō	0 pts	—	1 jours
+
+KS
+Kageo Sunaba
+NIN-001891
+	Genin confirmé
+ÉCHÉANCE PROCHE	10 000 Ryō	90 pts	—	1 jours
+
+ST
+Satoru Takada
+NIN-001932
+	Genin confirmé
+ÉCHÉANCE PROCHE	10 000 Ryō	55 pts	—	1 jours
+
+ET
+Enjin Tsukishima
+NIN-001842
+	Genin confirmé
+ÉCHÉANCE PROCHE	10 000 Ryō	100 pts	—	1 jours
+
+SZ
+Seiya Zetsubo
+NIN-001947
+	Genin confirmé
+ÉCHÉANCE PROCHE	10 000 Ryō	1 150 pts	—	1 jours
+
+KZ
+Karun Zukki
+NIN-001870
+	Genin confirmé
+ÉCHÉANCE PROCHE	10 000 Ryō	1 630 pts	—	1 jours
+
+SZ
+Shinda Zukki
+NIN-001871
+	Genin confirmé
+ÉCHÉANCE PROCHE	10 000 Ryō	194 pts	—	1 jours
+
+NK
+Naoto Korotoko
+NIN-001693
+	Tokubetsu Jonin
+ÉCHÉANCE PROCHE	5 000 Ryō	1 050 pts	—	1 jours
+
+G
+Gao
+NIN-000893
+	Jonin
+À JOUR	Aucune	1 000 pts	—	—
+
+K.
+Kanzaki .
+NIN-002040
+	Chunin
+À JOUR	Aucune	0 pts	—	—
+
+K.
+kaoru .
+NIN-002015
+	Genin confirmé
+À JOUR	Aucune	0 pts	—	—
+
+SA
+shinya abarai
+NIN-001730
+	Konin
+À JOUR	Aucune	595 pts	—	—
+
+KA
+kuma abarai
+NIN-002018
+	Genin confirmé
+À JOUR	Aucune	0 pts	—	—
+
+RA
+Ryo Abarai
+NIN-001741
+	Konin
+À JOUR	Aucune	1 100 pts	—	—
+
+SA
+Shun Akane
+NIN-001792
+	Genin confirmé
+À JOUR	Aucune	600 pts	—	—
+
+JA
+Junzo Akimura
+NIN-001600
+	Chunin
+À JOUR	Aucune	610 pts	—	—
+
+YA
+Yoru Akito
+NIN-001687
+	Genin simple
+À JOUR	Aucune	2 050 pts	—	—
+
+KA
+Kiryu Akiyama
+NIN-001690
+	Genin simple
+À JOUR	Aucune	28 pts	—	—
+
+SA
+sora aku
+NIN-001294
+	Konin
+À JOUR	Aucune	1 085 pts	—	—
+
+ZA
+Zeken Akuma
+NIN-001108
+	Jonin
+À JOUR	Aucune	1 000 pts	—	—
+
+KA
+Kaien akuro
+NIN-001850
+	Chunin
+À JOUR	Aucune	500 pts	—	—
+
+SA
+Sanka Akuro
+NIN-001943
+	Chunin
+À JOUR	Aucune	500 pts	—	—
+
+MA
+Maru Akuro
+NIN-001653
+	Chunin
+À JOUR	Aucune	829 pts	—	—
+
+SA
+Shinraishi Ara
+NIN-000998
+	Jonin
+À JOUR	Aucune	2 055 pts	—	—
+
+KA
+Kito Arak
+NIN-001942
+	Genin confirmé
+À JOUR	Aucune	100 pts	—	—
+
+MA
+Masaki Arakawa
+NIN-001944
+	Genin simple
+À JOUR	Aucune	90 pts	—	—
+
+SA
+Shinran Arakaze
+NIN-001633
+	Genin simple
+À JOUR	Aucune	25 pts	—	—
+
+TA
+TaoTao Arashi
+NIN-001777
+	Chunin
+À JOUR	Aucune	900 pts	—	—
+
+KA
+Kenshiro Arashi
+NIN-001753
+	Chunin
+À JOUR	Aucune	790 pts	—	—
+
+SA
+Shinji Asakura
+NIN-001203
+	Tokubetsu Jonin
+À JOUR	Aucune	1 500 pts	—	—
+
+KA
+Kiyomi Asakura
+NIN-001737
+	Konin
+À JOUR	Aucune	500 pts	—	—
+
+KA
+Kuroha Asakura
+NIN-001975
+	Chunin
+À JOUR	Aucune	500 pts	—	—
+
+MA
+Maito Asama
+NIN-001668
+	Konin
+À JOUR	Aucune	1 114 pts	—	—
+
+SA
+Sato Ato
+NIN-001873
+	Chunin
+À JOUR	Aucune	1 105 pts	—	—
+
+JA
+Juzo Azuno
+NIN-001477
+	Non renseigné
+DÉCÉDÉ	Aucune	1 050 pts	—	—
+
+KB
+Kazan Barragan
+NIN-001797
+	Konin
+À JOUR	Aucune	1 000 pts	—	—
+
+GB
+Ghi Barragan
+NIN-001816
+	Chunin
+À JOUR	Aucune	1 000 pts	—	—
+
+BB
+Baji Barragan
+NIN-001817
+	Konin
+À JOUR	Aucune	1 000 pts	—	—
+
+GB
+Gho Barragan
+NIN-001754
+	Chunin
+À JOUR	Aucune	0 pts	—	—
+
+RB
+Raiga Barragan
+NIN-001818
+	Chunin
+À JOUR	Aucune	1 000 pts	—	—
+
+ZB
+Zahyn Barragan
+NIN-001819
+	Konin
+À JOUR	Aucune	1 000 pts	—	—
+
+KC
+Kaito Chiiketsu
+NIN-001042
+	Tokubetsu Jonin
+À JOUR	Aucune	2 000 pts	—	—
+
+NC
+Naoki Chiiketsu
+NIN-001098
+	Non renseigné
+DÉCÉDÉ	Aucune	2 560 pts	—	—
+
+MC
+Meito Chiiketsu
+NIN-001838
+	Tokubetsu Jonin
+À JOUR	Aucune	1 000 pts	—	—
+
+SC
+Sunamaru Chikatsume
+NIN-001860 · Suna.
+	Chunin
+À JOUR	Aucune	500 pts	—	—
+
+AC
+Araku Chikatsume
+NIN-001800
+	Konin
+À JOUR	Aucune	1 000 pts	—	—
+
+TC
+Taiko Chikatsume
+NIN-001637
+	Chunin
+À JOUR	Aucune	1 080 pts	—	—
+
+SC
+Seiren Chikatsume
+NIN-001329
+	Commandant Jonin
+À JOUR	Aucune	1 000 pts	—	—
+
+KD
+kuu denmon
+NIN-002006
+	Genin confirmé
+À JOUR	Aucune	540 pts	—	—
+
+MD
+Maito Denmon
+NIN-002031
+	Genin confirmé
+À JOUR	Aucune	1 305 pts	—	—
+
+YD
+yuka Denmon
+NIN-001292
+	Tokubetsu Jonin
+À JOUR	Aucune	27 465 pts	—	—
+
+SD
+Shizuka Densetsu
+NIN-001835
+	Genin simple
+À JOUR	Aucune	710 pts	—	—
+
+RD
+Rekka Doma
+NIN-000913
+	Tokubetsu Jonin
+DÉCÉDÉ	Aucune	1 884 pts	—	—
+
+RD
+Raion DOMONA
+NIN-001903
+	Chunin
+À JOUR	Aucune	800 pts	—	—
+
+KE
+Kenshi Eikichi
+NIN-001965
+	Genin simple
+À JOUR	Aucune	40 pts	—	—
+
+DE
+Daichi Eikichi
+NIN-001909
+	Genin confirmé
+À JOUR	Aucune	520 pts	—	—
+
+NE
+Naoki Eikichi
+NIN-001910
+	Genin confirmé
+À JOUR	Aucune	35 pts	—	—
+
+SE
+Sakuo Enma
+NIN-001727
+	Chunin
+À JOUR	Aucune	1 000 pts	—	—
+
+SF
+Soma Fujita
+NIN-001948
+	Genin simple
+À JOUR	Aucune	15 pts	—	—
+
+SF
+Sora Fuyutsuki
+NIN-001580
+	Tokubetsu Jonin
+À JOUR	Aucune	1 020 pts	—	—
+
+ZG
+Zuko Gakkai
+NIN-001735 · X
+	Chunin
+À JOUR	Aucune	790 pts	—	—
+
+KH
+Kenma Hakumei
+NIN-000899
+	Kage
+DÉCÉDÉ	Aucune	4 250 pts	—	—
+
+RH
+Renjiro Hakumei
+NIN-001394
+	Jonin
+À JOUR	Aucune	1 950 pts	—	—
+
+SH
+Shin Hanazora
+NIN-001644
+	Chunin
+À JOUR	Aucune	1 525 pts	—	—
+
+IH
+Ilya Hanazora
+NIN-001029
+	Tokubetsu Jonin
+À JOUR	Aucune	1 011 pts	—	—
+
+LH
+lei hang
+NIN-002030
+	Genin confirmé
+À JOUR	Aucune	30 pts	—	—
+
+KH
+KAZE HARASHI
+NIN-001995
+	Genin confirmé
+À JOUR	Aucune	85 pts	—	—
+
+WH
+Wagachi Haruni
+NIN-001787
+	Chunin
+À JOUR	Aucune	530 pts	—	—
+
+EH
+ezio hasaki
+NIN-002022
+	Genin confirmé
+À JOUR	Aucune	99 pts	—	—
+
+RH
+Raiko Hayama
+NIN-001911
+	Genin confirmé
+À JOUR	Aucune	500 pts	—	—
+
+KH
+Kuro Hayashi
+NIN-001957
+	Genin confirmé
+À JOUR	Aucune	525 pts	—	—
+
+KH
+Kuro Hayato
+NIN-001912
+	Chunin
+À JOUR	Aucune	600 pts	—	—
+
+AH
+Akaime Hayko
+NIN-001586
+	Konin
+À JOUR	Aucune	1 180 pts	—	—
+
+NH
+Nairo Hideoshi
+NIN-001480
+	Konin
+À JOUR	Aucune	2 010 pts	—	—
+
+HH
+Hiko Hikamatsu
+NIN-001525
+	Konin
+À JOUR	Aucune	1 052 pts	—	—
+
+IH
+Izen Hoki
+NIN-001401
+	Jonin
+À JOUR	Aucune	1 290 pts	—	—
+
+YH
+Yukiro Hoki
+NIN-001840
+	Tokubetsu Jonin
+À JOUR	Aucune	1 400 pts	—	—
+
+AH
+Araki Hoki
+NIN-000964
+	Jonin
+INACTIF	Aucune	2 000 pts	—	—
+
+AH
+Aoki Hoki
+NIN-001479
+	Jonin
+À JOUR	Aucune	1 500 pts	—	—
+
+AH
+AOI HOSHIGAMI
+NIN-002039
+	Genin confirmé
+À JOUR	Aucune	0 pts	—	—
+
+AH
+AIZAWA HOSHIKAWA
+NIN-002000
+	Genin confirmé
+À JOUR	Aucune	175 pts	—	—
+
+KI
+kimiko ikeda
+NIN-001952
+	Genin confirmé
+À JOUR	Aucune	215 pts	—	—
+
+AI
+azai inui
+NIN-002014
+	Genin confirmé
+À JOUR	Aucune	60 pts	—	—
+
+SJ
+Shindôra J Sabaku
+NIN-001632
+	Tokubetsu Jonin
+À JOUR	Aucune	0 pts	—	—
+
+SJ
+Seiro Jin
+NIN-002011
+	Genin confirmé
+À JOUR	Aucune	0 pts	—	—
+
+AJ
+Asogi Jizo
+NIN-002012
+	Genin confirmé
+À JOUR	Aucune	0 pts	—	—
+
+ZK
+Zaraki Kama
+NIN-001698
+	Konin
+À JOUR	Aucune	530 pts	—	—
+
+KK
+Kyouran Kana
+NIN-001773
+	Genin confirmé
+À JOUR	Aucune	140 pts	—	—
+
+KK
+khayro kashu
+NIN-002024
+	Genin confirmé
+À JOUR	Aucune	0 pts	—	—
+
+OK
+osamu kashu
+NIN-002025
+	Genin confirmé
+À JOUR	Aucune	0 pts	—	—
+
+KK
+KURIBOH KASHU
+NIN-002035
+	Genin confirmé
+À JOUR	Aucune	0 pts	—	—
+
+KK
+kenza kata
+NIN-002021
+	Genin confirmé
+À JOUR	Aucune	0 pts	—	—
+
+SK
+Shizaki Katzo
+NIN-001110
+	Jonin
+À JOUR	Aucune	750 pts	—	—
+
+SK
+Shiden Kawataro
+NIN-001986
+	Genin confirmé
+À JOUR	Aucune	222 pts	—	—
+
+MK
+Mitsu Kazai
+NIN-001652
+	Genin confirmé
+À JOUR	Aucune	345 pts	—	—
+
+SK
+Soren Kazai
+NIN-001681
+	Chunin
+À JOUR	Aucune	3 740 pts	—	—
+
+KK
+Kaito Kazan
+NIN-001391
+	Konin
+À JOUR	Aucune	1 890 pts	—	—
+
+SK
+Shiro Kazanami
+NIN-001885
+	Chunin
+À JOUR	Aucune	500 pts	—	—
+
+JK
+JINRA KAZANAMI
+NIN-001847
+	Genin simple
+À JOUR	Aucune	0 pts	—	—
+
+HK
+HEBI KAZEHARA
+NIN-001998
+	Genin simple
+À JOUR	Aucune	15 pts	—	—
+
+JK
+Juuzo Kazetsu
+NIN-002034
+	Chunin
+À JOUR	Aucune	500 pts	—	—
+
+AK
+Akihiro Ken
+NIN-001476
+	Chunin
+À JOUR	Aucune	940 pts	—	—
+
+TK
+Tetsuo Kento
+NIN-001719
+	Chunin
+À JOUR	Aucune	6 155 pts	—	—
+
+AK
+Aiki Kento
+NIN-002032
+	Genin confirmé
+À JOUR	Aucune	500 pts	—	—
+
+IK
+Isao Kesuke
+NIN-001592
+	Tokubetsu Jonin
+À JOUR	Aucune	1 000 pts	—	—
+
+HK
+Hito Kibo
+NIN-001353
+	Tokubetsu Jonin
+À JOUR	Aucune	1 268 pts	—	—
+
+HK
+Hakiro Kimetsu
+NIN-001664
+	Chunin
+À JOUR	Aucune	665 pts	—	—
+
+SK
+Shin Kioma
+NIN-001232
+	Tokubetsu Jonin
+À JOUR	Aucune	500 pts	—	—
+
+RK
+Ryyuko Kirasame
+NIN-001635
+	Chunin
+À JOUR	Aucune	1 005 pts	—	—
+
+MK
+mayura kirigawa
+NIN-001999
+	Genin confirmé
+À JOUR	Aucune	15 pts	—	—
+
+RK
+Ren Kiyoshi
+NIN-001392
+	Tokubetsu Jonin
+À JOUR	Aucune	1 620 pts	—	—
+
+MK
+mabushi koizumi
+NIN-002020
+	Genin confirmé
+À JOUR	Aucune	0 pts	—	—
+
+SK
+satoshi koizumi
+NIN-002017
+	Genin confirmé
+À JOUR	Aucune	0 pts	—	—
+
+GK
+Gheno Komotsu
+NIN-001688
+	Chunin
+À JOUR	Aucune	1 152 pts	—	—
+
+IK
+itsura konen
+NIN-001977
+	Genin confirmé
+À JOUR	Aucune	0 pts	—	—
+
+DK
+deku korda
+NIN-002029
+	Genin confirmé
+À JOUR	Aucune	125 pts	—	—
+
+SK
+Shaa Kosajin
+NIN-001697
+	Chunin
+À JOUR	Aucune	1 216 pts	—	—
+
+KK
+Koma Kosajin
+NIN-001723
+	Tokubetsu Jonin
+À JOUR	Aucune	0 pts	—	—
+
+YK
+Yami Kosajin
+NIN-000834
+	Non renseigné
+DÉCÉDÉ	Aucune	7 180 pts	—	—
+
+SK
+Shayne Kosajin
+NIN-001875
+	Chunin
+À JOUR	Aucune	2 325 pts	—	—
+
+SK
+Shayan Kosajin
+NIN-001898
+	Konin
+À JOUR	Aucune	1 000 pts	—	—
+
+SK
+Shayra Kosajin
+NIN-001899
+	Genin confirmé
+À JOUR	Aucune	1 000 pts	—	—
+
+SK
+SHIDEN KOSAJIN
+NIN-002002
+	Chunin
+À JOUR	Aucune	670 pts	—	—
+
+DK
+Daiki Kubo
+NIN-001382
+	Tokubetsu Jonin
+À JOUR	Aucune	2 655 pts	—	—
+
+MK
+myako kudo
+NIN-001573
+	Tokubetsu Jonin
+À JOUR	Aucune	1 025 pts	—	—
+
+CK
+Choso Kurogami
+NIN-001378
+	Tokubetsu Jonin
+À JOUR	Aucune	2 500 pts	—	—
+
+RK
+RAIZEN KUROGANE
+NIN-001992
+	Genin confirmé
+À JOUR	Aucune	2 329 pts	—	—
+
+RK
+Renga Kuroha
+NIN-001649
+	Genin confirmé
+À JOUR	Aucune	0 pts	—	—
+
+NK
+Naikyo Kurosaki
+NIN-001662
+	Chunin
+À JOUR	Aucune	2 118 pts	—	—
+
+MK
+Meito Kusakabe
+NIN-001926
+	Chunin
+À JOUR	Aucune	650 pts	—	—
+
+TK
+TADEUS KUYGA
+NIN-001993
+	Genin simple
+À JOUR	Aucune	205 pts	—	—
+
+PK
+Pokyu Kuzushi
+NIN-002044
+	Tokubetsu Jonin
+À JOUR	Aucune	0 pts	—	—
+
+IK
+Izan Kyokaze
+NIN-001827
+	Konin
+À JOUR	Aucune	500 pts	—	—
+
+TK
+tayushi kyozen
+NIN-002023
+	Genin confirmé
+À JOUR	Aucune	0 pts	—	—
+
+KK
+kishin kyozen
+NIN-002019
+	Genin confirmé
+À JOUR	Aucune	0 pts	—	—
+
+SM
+Saikyo Magatama
+NIN-001976
+	Chunin
+À JOUR	Aucune	0 pts	—	—
+
+JM
+Jinpachi Majima
+NIN-001862
+	Genin confirmé
+À JOUR	Aucune	450 pts	—	—
+
+MM
+Milo Mako
+NIN-001849
+	Konin
+À JOUR	Aucune	1 020 pts	—	—
+
+BM
+Byaku Mara
+NIN-001684
+	Konin
+À JOUR	Aucune	100 pts	—	—
+
+IM
+Iniko Meshin
+NIN-001960
+	Genin confirmé
+À JOUR	Aucune	620 pts	—	—
+
+KM
+KAZU MIKANO
+NIN-001896
+	Chunin
+À JOUR	Aucune	126 pts	—	—
+
+NM
+Naojin Minami
+NIN-000823
+	Jonin
+À JOUR	Aucune	3 000 pts	—	—
+
+IM
+Itsuki Mizuno
+NIN-001734
+	Genin simple
+À JOUR	Aucune	65 pts	—	—
+
+RM
+Ryu Murakumo
+NIN-001973
+	Chunin
+À JOUR	Aucune	400 pts	—	—
+
+SN
+seiya namise
+NIN-002028
+	Genin confirmé
+À JOUR	Aucune	0 pts	—	—
+
+MN
+Medo Nimto
+NIN-001268
+	Tokubetsu Jonin
+À JOUR	Aucune	8 954 pts	—	—
+
+RN
+Rei Nishi
+NIN-001677
+	Tokubetsu Jonin
+À JOUR	Aucune	1 015 pts	—	—
+
+NO
+Nyma Obanai
+NIN-001857
+	Chunin
+À JOUR	Aucune	125 pts	—	—
+
+YO
+Yoto Oshi
+NIN-001659
+	Genin confirmé
+À JOUR	Aucune	25 pts	—	—
+
+KR
+Kashikoi Rean
+NIN-001863
+	Chunin
+À JOUR	Aucune	517 pts	—	—
+
+MR
+Mizura Rengo
+NIN-001254
+	Tokubetsu Jonin
+À JOUR	Aucune	1 530 pts	—	—
+
+AR
+Aki Rensai
+NIN-001515
+	Tokubetsu Jonin
+À JOUR	Aucune	2 790 pts	—	—
+
+KR
+Khayro Rhaykuchi
+NIN-001636
+	Konin
+À JOUR	Aucune	1 030 pts	—	—
+
+KR
+Kazeya Roran
+NIN-001567
+	Tokubetsu Jonin
+À JOUR	Aucune	1 195 pts	—	—
+
+AR
+Aregami Roran
+NIN-001607
+	Konin
+À JOUR	Aucune	1 045 pts	—	—
+
+KR
+Kazemi Roran
+NIN-001457
+	Jonin
+À JOUR	Aucune	935 pts	—	—
+
+AR
+Areto Roran
+NIN-000830
+	Jonin
+DÉCÉDÉ	Aucune	2 152 pts	—	—
+
+KR
+Kazegami Roran
+NIN-001626
+	Tokubetsu Jonin
+À JOUR	Aucune	1 150 pts	—	—
+
+SR
+Sinojin Ryoko
+NIN-001774
+	Konin
+À JOUR	Aucune	0 pts	—	—
+
+AR
+atsu ryuga
+NIN-002010
+	Chunin
+À JOUR	Aucune	500 pts	—	—
+
+AR
+Akashi Ryuga
+NIN-001991
+	Genin confirmé
+À JOUR	Aucune	45 pts	—	—
+
+TR
+Tetsu Ryuga
+NIN-001671
+	Konin
+À JOUR	Aucune	1 000 pts	—	—
+
+HR
+Hinami Ryuta
+NIN-001763
+	Konin
+À JOUR	Aucune	0 pts	—	—
+
+SS
+Senko sabaku
+NIN-002026
+	Chunin
+À JOUR	Aucune	1 000 pts	—	—
+
+AS
+Azuna Sabaku
+NIN-001234
+	Jonin
+DÉCÉDÉ	Aucune	3 370 pts	—	—
+
+AS
+Aruna Sabaku
+NIN-001453
+	Tokubetsu Jonin
+À JOUR	Aucune	1 695 pts	—	—
+
+HS
+Hizuna Sabaku
+NIN-001454
+	Konin
+À JOUR	Aucune	1 400 pts	—	—
+
+RS
+Ryosa Sabaku
+NIN-001384
+	Kage
+À JOUR	Aucune	2 935 pts	—	—
+
+SS
+Seisura Sabaku
+NIN-000867
+	Commandant Jonin
+À JOUR	Aucune	2 000 pts	—	—
+
+SS
+Sayura Sabaku
+NIN-001456
+	Tokubetsu Jonin
+À JOUR	Aucune	6 326 pts	—	—
+
+MS
+Miya Sabaku
+NIN-001963
+	Konin
+À JOUR	Aucune	3 395 pts	—	—
+
+SS
+Shintaro Sabarei
+NIN-001685
+	Chunin
+À JOUR	Aucune	530 pts	—	—
+
+IS
+Izuru Saburo
+NIN-002013
+	Genin simple
+À JOUR	Aucune	130 pts	—	—
+
+KS
+kai saegusa
+NIN-002027
+	Genin confirmé
+À JOUR	Aucune	0 pts	—	—
+
+JS
+Jokai Saegusa
+NIN-001703
+	Konin
+À JOUR	Aucune	980 pts	—	—
+
+RS
+Renji Sairo
+NIN-001585
+	Konin
+À JOUR	Aucune	1 001 pts	—	—
+
+SS
+Seika Sajin
+NIN-001716
+	Konin
+À JOUR	Aucune	500 pts	—	—
+
+KS
+Kairo Sajin
+NIN-000976
+	Jonin
+À JOUR	Aucune	1 040 pts	—	—
+
+SS
+Shiro Sajin
+NIN-001048
+	Jonin
+À JOUR	Aucune	2 015 pts	—	—
+
+KS
+Kotaro Sajin
+NIN-002036
+	Chunin
+À JOUR	Aucune	0 pts	—	—
+
+NS
+Neruwa Sajin
+NIN-001784
+	Konin
+À JOUR	Aucune	500 pts	—	—
+
+SS
+Seiren Saketsu
+NIN-001339
+	Tokubetsu Jonin
+À JOUR	Aucune	500 pts	—	—
+
+BS
+Bachô Saketsu
+NIN-001532
+	Konin
+À JOUR	Aucune	1 026 pts	—	—
+
+KS
+keisuke sano
+NIN-001190
+	Jonin
+REPRISE À RÉGULARISER	Aucune	1 000 pts	—	2 sem. ancien registre
+
+RS
+Reisuke Sano
+NIN-001799
+	Konin
+À JOUR	Aucune	700 pts	—	—
+
+CS
+Choso seigan
+NIN-001650
+	Konin
+À JOUR	Aucune	1 200 pts	—	—
+
+HS
+Hen seijuuro
+NIN-001492
+	Chunin
+À JOUR	Aucune	285 pts	—	—
+
+KS
+Kôya Senka
+NIN-001930
+	Genin confirmé
+À JOUR	Aucune	505 pts	—	—
+
+DS
+Daichi Shibata
+NIN-001389
+	Tokubetsu Jonin
+À JOUR	Aucune	20 550 pts	—	—
+
+SS
+Seiashi Shidako
+NIN-001695
+	Genin simple
+À JOUR	Aucune	55 pts	—	—
+
+MS
+Masune Shigara
+NIN-001954
+	Chunin
+À JOUR	Aucune	500 pts	—	—
+
+TS
+Tada Shiho
+NIN-002041
+	Chunin
+À JOUR	Aucune	0 pts	—	—
+
+IS
+Isako shikuro
+NIN-001317
+	Tokubetsu Jonin
+À JOUR	Aucune	1 185 pts	—	—
+
+KS
+Keisuke Shinomori
+NIN-001692
+	Konin
+À JOUR	Aucune	1 022 pts	—	—
+
+RS
+ryuk shinya
+NIN-002004
+	Genin confirmé
+À JOUR	Aucune	0 pts	—	—
+
+ES
+Enkyo Shirogane
+NIN-001426
+	Jonin
+À JOUR	Aucune	500 pts	—	—
+
+RS
+Roa Shirogane
+NIN-001436
+	Tokubetsu Jonin
+À JOUR	Aucune	1 005 pts	—	—
+
+JS
+Juzô Shirogane
+NIN-001775
+	Genin confirmé
+À JOUR	Aucune	700 pts	—	—
+
+KS
+KAIEN SHIROGANE
+NIN-002043
+	Genin confirmé
+À JOUR	Aucune	0 pts	—	—
+
+MS
+Mizuno Shizuku
+NIN-001950
+	Genin confirmé
+À JOUR	Aucune	180 pts	—	—
+
+AS
+Akio Shizumori
+NIN-001881
+	Genin confirmé
+À JOUR	Aucune	2 240 pts	—	—
+
+AS
+ASHURA SHUTO
+NIN-001994
+	Genin simple
+À JOUR	Aucune	100 pts	—	—
+
+SS
+sajin son
+NIN-001972
+	Genin confirmé
+À JOUR	Aucune	0 pts	—	—
+
+HS
+Hibiki Son
+NIN-001982
+	Chunin
+À JOUR	Aucune	0 pts	—	—
+
+US
+Ubaki Sora
+NIN-001605
+	Konin
+À JOUR	Aucune	500 pts	—	—
+
+IS
+Ikezu Soran
+NIN-001892
+	Chunin
+À JOUR	Aucune	1 830 pts	—	—
+
+TS
+Tatsuya Soran
+NIN-001981
+	Chunin
+À JOUR	Aucune	1 500 pts	—	—
+
+DS
+DAICHI SUDA
+NIN-001996
+	Genin simple
+À JOUR	Aucune	20 pts	—	—
+
+YT
+YUTO TAKAMORI
+NIN-001989
+	Genin simple
+À JOUR	Aucune	0 pts	—	—
+
+ST
+Shikano Takay
+NIN-001967
+	Genin confirmé
+À JOUR	Aucune	0 pts	—	—
+
+MT
+Mirage Tamiko
+NIN-001682
+	Chunin
+À JOUR	Aucune	1 508 pts	—	—
+
+HT
+Hachi Tanemura
+NIN-001619
+	Konin
+À JOUR	Aucune	3 545 pts	—	—
+
+IT
+Izuki Tenma
+NIN-001933
+	Genin confirmé
+À JOUR	Aucune	500 pts	—	—
+
+RT
+Ryoga Tensho
+NIN-001553
+	Konin
+À JOUR	Aucune	1 544 pts	—	—
+
+RT
+Ryoma Tensho
+NIN-001373
+	Tokubetsu Jonin
+À JOUR	Aucune	11 294 pts	—	—
+
+ST
+SHIN TETSUYA
+NIN-001836
+	Konin
+À JOUR	Aucune	1 095 pts	—	—
+
+RT
+Ryuga Togane
+NIN-001833
+	Tokubetsu Jonin
+À JOUR	Aucune	1 000 pts	—	—
+
+ST
+Shiwa Togarashi
+NIN-001761
+	Genin confirmé
+À JOUR	Aucune	1 176 pts	—	—
+
+ST
+SAHEN Togarashi
+NIN-001846
+	Genin simple
+À JOUR	Aucune	1 020 pts	—	—
+
+ST
+Soji Tsukihana
+NIN-001859
+	Konin
+À JOUR	Aucune	500 pts	—	—
+
+ST
+Sôki Tsukihana
+NIN-001067
+	Commandant Jonin
+À JOUR	Aucune	2 000 pts	—	—
+
+ST
+Seiya Tsukishima
+NIN-001712
+	Genin simple
+À JOUR	Aucune	40 pts	—	—
+
+RT
+Retsu Tsukishiro
+NIN-001936
+	Chunin
+À JOUR	Aucune	2 500 pts	—	—
+
+KU
+kaito umino
+NIN-002016
+	Genin confirmé
+À JOUR	Aucune	0 pts	—	—
+
+HV
+Hisashi Vonkai
+NIN-001811
+	Chunin
+À JOUR	Aucune	500 pts	—	—
+
+MY
+Masaki Yagura
+NIN-001778
+	Genin confirmé
+À JOUR	Aucune	0 pts	—	—
+
+KY
+Koo Yake
+NIN-001837
+	Chunin
+À JOUR	Aucune	500 pts	—	—
+
+KY
+Kin Yake
+NIN-001733
+	Genin simple
+À JOUR	Aucune	20 pts	—	—
+
+SY
+shinken yamada
+NIN-002003
+	Genin confirmé
+À JOUR	Aucune	0 pts	—	—
+
+RY
+Raiko Yamada
+NIN-001597
+	Konin
+À JOUR	Aucune	1 483 pts	—	—
+
+NY
+Naito Yamai
+NIN-001374
+	Tokubetsu Jonin
+À JOUR	Aucune	1 000 pts	—	—
+
+AY
+Arekitsu Yami
+NIN-001584
+	Konin
+À JOUR	Aucune	1 138 pts	—	—
+
+SY
+Saiyaku Yami
+NIN-001890
+	Genin confirmé
+À JOUR	Aucune	1 410 pts	—	—
+
+KY
+Kaku Yara
+NIN-002038
+	Genin confirmé
+À JOUR	Aucune	530 pts	—	—
+
+MY
+MOUTEN YUKIBANA
+NIN-001997
+	Genin simple
+À JOUR	Aucune	320 pts	—	—
+
+KY
+Kyo Yusei
+NIN-001715
+	Konin
+À JOUR	Aucune	910 pts	—	—
+
+AY
+Akaari Yusei
+NIN-002042
+	Chunin
+À JOUR	Aucune	500 pts	—	—
+
+TY
+Toya Yusei
+NIN-001710
+	Konin
+À JOUR	Aucune	2 270 pts	—	—
+
+RY
+Rao Yusei
+NIN-001713
+	Konin
+À JOUR	Aucune	4 245 pts	—	—
+
+SY
+Sae Yusei
+NIN-001670
+	Konin
+À JOUR	Aucune	4 530 pts	—	—
+
+KY
+Kindra Yutsu
+NIN-001729
+	Konin
+À JOUR	Aucune	1 535 pts	—	—
+
+MZ
+Mobu Zaahin
+NIN-002037
+	Genin confirmé
+À JOUR	Aucune	0 pts	—	—
+
+YZ
+YUN ZAAHIN
+NIN-002033
+	Genin confirmé
+À JOUR	Aucune	0 pts	—	—
+
+SZ
+Sena Zetsubo
+NIN-001941
+	Genin confirmé
+À JOUR	Aucune	500 pts	—	—
