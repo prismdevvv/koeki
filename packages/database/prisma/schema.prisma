@@ -278,6 +278,7 @@ model NinjaProfile {
 
   @@index([lastName, firstName])
   @@index([currentGradeId, status])
+  @@index([status])
 }
 
 // Jonin+ loadout: one row per ninja, slots as JSON — { haut: { tier, type }, bas, bottes,
@@ -403,6 +404,7 @@ model TaxPayment {
   adjustments    TaxAdjustment[]
 
   @@index([ninjaId, createdAt])
+  @@index([createdAt])
 }
 
 model TaxPaymentAllocation {
@@ -550,6 +552,8 @@ model ResourceTransaction {
   ninja          NinjaProfile              @relation(fields: [ninjaId], references: [id])
   items          ResourceTransactionItem[]
   movements      InventoryMovement[]
+
+  @@index([type, status, createdAt])
 }
 
 model ResourceTransactionItem {

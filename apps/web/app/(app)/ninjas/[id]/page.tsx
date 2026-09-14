@@ -16,22 +16,24 @@ export default async function NinjaDetailPage({ params, searchParams }: { params
   const session = await requireSession();
   const { id } = await params;
   const query = await searchParams;
+  const ownProfile = demoMode ? null : await prisma.ninjaProfile.findUnique({ where: { userId: session.userId }, select: { id: true } });
   if (!demoMode && session.roles.length === 1 && session.roles[0] === "NINJA") {
-    const own = await prisma.ninjaProfile.findUnique({ where: { userId: session.userId }, select: { id: true } });
-    if (!own) redirect("/profil");
-    if (own!.id !== id) redirect("/access-denied");
+    if (!ownProfile) redirect("/profil");
+    if (ownProfile.id !== id) redirect("/access-denied");
   }
   const canPay = hasPermission(session, "payments:write");
   const canWrite = hasPermission(session, "ninjas:write");
-  const ownProfile = demoMode ? null : await prisma.ninjaProfile.findUnique({ where: { userId: session.userId }, select: { id: true } });
   const isOwner = ownProfile?.id === id;
-  const data = await getNinjaDetail(id, { canSeeNotes: canWrite || hasPermission(session, "audit:read") });
+  const [data, exemptionSetting, resourcesForDonation] = await Promise.all([
+    getNinjaDetail(id, { canSeeNotes: canWrite || hasPermission(session, "audit:read") }),
+    demoMode ? Promise.resolve(null) : prisma.appSetting.findUnique({ where: { key: "exemptionPolicy" } }),
+    demoMode ? Promise.resolve([]) : prisma.resource.findMany({ where: { isActive: true }, orderBy: [{ exemptionPerUnit: "desc" }, { name: "asc" }] })
+  ]);
   if (!data) notFound();
-  const exemptionSetting = demoMode ? null : await prisma.appSetting.findUnique({ where: { key: "exemptionPolicy" } });
   const exemptionPolicy = parseExemptionPolicy(exemptionSetting?.value);
   const isActive = data.lifecycleStatus === "ACTIVE";
   const gradeNeedsUpdate = isActive && data.grade.code === "UNKNOWN";
-  const donatable = !demoMode && canPay && isActive ? await prisma.resource.findMany({ where: { isActive: true }, orderBy: [{ exemptionPerUnit: "desc" }, { name: "asc" }] }) : [];
+  const donatable = !demoMode && canPay && isActive ? resourcesForDonation : [];
   const donationResourceOptions = donatable.map((resource) => {
     const points = resource.pointsPerUnit, rate = Number(resource.exemptionPerUnit);
     const detail = [points > 0 ? `${points} pts/u` : null, rate > 0 ? `${new Intl.NumberFormat("fr-FR").format(rate)} ¥/u` : null].filter(Boolean).join(" · ");
