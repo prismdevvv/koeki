@@ -347,7 +347,13 @@ const normalizeName = (value: string) => value.normalize("NFKD").replace(/\p{M}/
 export async function searchUnfiledZenkaiCharacters(query: string): Promise<Array<{ charKey: string; name: string; rank: string }>> {
   if (demoMode || !query.trim()) return [];
   const { getRecentlyActiveSunaCharacters, rankLabel } = await import("./zenkai");
-  const [characters, aggregates] = await Promise.all([getRecentlyActiveSunaCharacters(), loadNinjaAggregates()]);
+  // Zenkai being briefly unreachable must never break the registry search itself —
+  // it just means this "found on Zenkai" section comes up empty for a moment.
+  const [characters, aggregates] = await Promise.all([
+    getRecentlyActiveSunaCharacters().catch(() => []),
+    loadNinjaAggregates()
+  ]);
+  if (!characters.length) return [];
   const knownNames = new Set(aggregates.filter((ninja) => ninja.status !== "ARCHIVED").map((ninja) => normalizeName(`${ninja.firstName} ${ninja.lastName}`)));
   const q = query.trim().toLowerCase();
   return characters.filter((character) => character.name.toLowerCase().includes(q) && !knownNames.has(normalizeName(character.name)))

@@ -18,8 +18,17 @@ export type ZenkaiCharacter = {
   lastPlayedAt: string | null; hidden: boolean; divisions: ZenkaiDivision[];
 };
 
+// A hung external API must never hang a page (or sign-in) indefinitely — fail fast
+// and let callers show a clear "service indisponible" message instead.
+const ZENKAI_TIMEOUT_MS = 8_000;
+
 async function fetchZenkaiPage(page: number): Promise<{ data: ZenkaiCharacter[]; pages: number }> {
-  const res = await fetch(`${ZENKAI_API}/api/characters?limit=${PAGE_LIMIT}&page=${page}&sort=name&order=asc`, { next: { revalidate: 120 } });
+  let res: Response;
+  try {
+    res = await fetch(`${ZENKAI_API}/api/characters?limit=${PAGE_LIMIT}&page=${page}&sort=name&order=asc`, { next: { revalidate: 120 }, signal: AbortSignal.timeout(ZENKAI_TIMEOUT_MS) });
+  } catch (error) {
+    throw new Error(`Zenkai API injoignable${error instanceof Error && error.name === "TimeoutError" ? " (délai dépassé)" : ""}`);
+  }
   if (!res.ok) throw new Error(`Zenkai API a répondu ${res.status}`);
   const body = await res.json();
   return { data: body.data ?? [], pages: body.pages ?? 1 };

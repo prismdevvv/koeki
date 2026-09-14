@@ -21,8 +21,9 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
       if (account?.provider !== "discord" || !account.access_token) return refuse("jeton d’accès Discord absent");
       const guildId = process.env.DISCORD_GUILD_ID;
       if (guildId) {
-        const response = await fetch("https://discord.com/api/users/@me/guilds", { headers: { Authorization: `Bearer ${account.access_token}` }, cache: "no-store" });
-        if (!response.ok) return refuse(`vérification du serveur Discord impossible (HTTP ${response.status})`);
+        const response = await fetch("https://discord.com/api/users/@me/guilds", { headers: { Authorization: `Bearer ${account.access_token}` }, cache: "no-store", signal: AbortSignal.timeout(8_000) })
+          .catch(() => null);
+        if (!response?.ok) return refuse(`vérification du serveur Discord impossible${response ? ` (HTTP ${response.status})` : " (délai dépassé ou service injoignable)"}`);
         const guilds = await response.json() as Array<{ id: string }>;
         if (!guilds.some((guild) => guild.id === guildId)) return refuse(`le compte n’appartient pas au serveur ${guildId} (${guilds.length} serveur${guilds.length > 1 ? "s" : ""} visibles)`);
       }
